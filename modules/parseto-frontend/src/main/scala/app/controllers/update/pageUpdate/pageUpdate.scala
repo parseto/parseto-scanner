@@ -10,7 +10,6 @@ import app.parseto.common.function.logs.log2
 object PageUpdate:
   def update(model: Model): MobilePageMsg => (Model, Cmd[IO, Msg]) =
     case MobilePageMsg.PreUpdate(page: MobilePageCase) =>
-      log2("update")(page)
       page match
         case _ =>
           (
@@ -25,3 +24,13 @@ object PageUpdate:
             ),
             Cmd.None
           )
+    case MobilePageMsg.Next =>
+      (
+        model.copy(
+        ),
+        Cmd.Emit(
+          MobilePageMsg.PreUpdate(
+            model.bizSector.filter(d => d.isClick)(0).page
+          )
+        )
+      )

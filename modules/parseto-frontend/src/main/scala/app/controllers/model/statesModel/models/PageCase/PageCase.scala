@@ -18,12 +18,12 @@ enum MobilePageCase:
   case P01_all(
       name: String = "init",
       url: String = "Observer",
-      actionButton: Move = Move(0, 1, 0)
+      actionButton: Move = Move(0, 1, 1)
   ) extends MobilePageCase
   case P01_medi(
       name: String = "init",
       url: String = "Observer",
-      actionButton: Move = Move(0, 1, 0)
+      actionButton: Move = Move(1, 1, 0)
   ) extends MobilePageCase
 
   case P02(

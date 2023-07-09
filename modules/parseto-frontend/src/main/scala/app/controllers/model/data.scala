@@ -1,5 +1,7 @@
 package parseto
 
+import io.leisuremeta.chain.lmscan.frontend.Log.log2
+
 case class BizSector(
     name: String,
     page: MobilePageCase = MobilePageCase.P01_all(),
@@ -9,7 +11,7 @@ case class BizSector(
 object BizSectorInit:
   val value = List(
     BizSector("의료", MobilePageCase.P01_medi(), true),
-    BizSector("법률"),
+    BizSector("법률", MobilePageCase.P01_medi(), true),
     BizSector("쇼핑몰"),
     BizSector("뉴스"),
     BizSector("숙박"),
@@ -37,11 +39,7 @@ object BizSectorPipe:
       false -> "left-0 w-full flex py-4 justify-center font-medium bg-blue-300 text-white rounded-b-[20px]"
     )
 
-  def msg(data: List[BizSector], name: String) =
+  def msg(name: String) =
     BizSectorMsg.BizSectorUpdate(
-      data.map(d =>
-        d.name == name match
-          case true => d.copy(isClick = !d.isClick)
-          case _    => d.copy(isClick = false)
-      )
+      name
     )

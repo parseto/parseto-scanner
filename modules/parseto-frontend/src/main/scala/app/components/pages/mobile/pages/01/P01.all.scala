@@ -17,7 +17,7 @@ object P01_all:
           BizSectorPipe.cssFooter(
             model.bizSector.map(d => d.isClick).contains(true)
           )
-        )(model)
+        )
       ),
       ActionButton.left(model),
       ActionButton.right(model)

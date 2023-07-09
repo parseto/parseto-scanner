@@ -4,6 +4,7 @@ import cats.effect.IO
 import tyrian.Html.*
 import scala.util.chaining.*
 import cats.instances.boolean
+import app.parseto.common.function.logs.log2
 
 object MobileMainView:
 
@@ -16,10 +17,11 @@ object MobileMainView:
   )(str)
 
   def genButtonCase(bizSectors: List[BizSector])(d: BizSector) =
+    log2("d")(d.isClick)
     genButton(
       d.name,
       BizSectorPipe.css(d.isClick),
-      BizSectorPipe.msg(bizSectors, d.name)
+      BizSectorPipe.msg(d.name)
     )
 
   def view(bizSectors: List[BizSector]) =

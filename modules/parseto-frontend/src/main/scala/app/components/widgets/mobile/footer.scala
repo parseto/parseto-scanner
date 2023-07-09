@@ -6,19 +6,12 @@ import scala.util.chaining.*
 
 object MobileFooterView:
 
-  def view(css: String)(model: Model) =
+  def view(css: String) =
     button(
-      // onClick(StepMsg.StepUpdate(1)),
-      onClick(
-        MobilePageMsg.PreUpdate(model.bizSector.filter(d => d.isClick)(0).page)
-      ),
+      onClick(MobilePageMsg.Next),
       `type` := "submit",
       `class` := css
     )(
       p("다음"),
       p(`class` := "pl-2 font font-bold")(">")
     )
-
-  // def render(model: Model) = model.step match
-  //   case 0 => (css: String) => view(css)
-  //   case 1 => (css: String) => div()

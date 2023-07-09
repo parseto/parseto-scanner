@@ -8,9 +8,10 @@ sealed trait Msg
 
 enum MobilePageMsg extends Msg:
   case PreUpdate(page: MobilePageCase)
+  case Next
 
 enum BizSectorMsg extends Msg:
-  case BizSectorUpdate(list: List[BizSector])
+  case BizSectorUpdate(name: String)
 
 enum StepMsg extends Msg:
   case StepUpdate(step: Int)
