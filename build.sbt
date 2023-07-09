@@ -87,6 +87,7 @@ lazy val scannerFrontend = (project in file("modules/scanner-frontend"))
   .settings(Dependencies.scannerFrontend)
   .settings(
     name := "scanner-frontend",
+    scalaVersion := s"${V.Scala_new}",
     version := "0.0.1",
     organization := "parseto",
     scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) }
