@@ -11,7 +11,7 @@ case class BizSector(
 object BizSectorInit:
   val value = List(
     BizSector("의료", MobilePageCase.P01_medi(), true),
-    BizSector("법률", MobilePageCase.P01_medi(), true),
+    BizSector("법률"),
     BizSector("쇼핑몰"),
     BizSector("뉴스"),
     BizSector("숙박"),

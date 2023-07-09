@@ -12,7 +12,12 @@ object P01_medi:
       div(
         `class` := "flex flex-col justify-between h-[100%] bg-white rounded-[20px]"
       )(
-        h1("asdasd")
+        iframe(
+          `class` := "mySmartphone content rounded-lg",
+          // src := "https://wikipedia.org",
+          src := "https://clinicmarket.goodoc.co.kr/",
+          style := "width:100%;border:none;height:100%;border-radius:20px"
+        )()
       ),
       ActionButton.left(model),
       ActionButton.right(model)
