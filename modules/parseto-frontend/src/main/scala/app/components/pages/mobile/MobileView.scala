@@ -20,14 +20,3 @@ object MobileView:
 
   def view(model: Model): Html[Msg] =
     Pages.render(model)
-
-  def view2(model: Model): Html[Msg] =
-    model.step match
-      case 0 =>
-        List(
-          Step0Render.render(model)("galuxy-note-10-display"),
-          Step0Render.render(model)("galuxy-note-10-intro"),
-          Pages.render(model)
-        )(2)
-
-      case 1 => Step1Render.render(model)

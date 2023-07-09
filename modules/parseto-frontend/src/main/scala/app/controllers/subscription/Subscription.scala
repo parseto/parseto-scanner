@@ -15,7 +15,7 @@ object Subscriptions:
         Sub.every[IO](1.second, "clock-ticks").map(RealTimeMsg.Tick.apply)
       case false =>
         Sub.None
-      // Sub.None
+
   // Sub.Batch(
   //   Option(Dom.select("dom-input")) match
   //     case None => Sub.None

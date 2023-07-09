@@ -4,7 +4,19 @@ import cats.effect.IO
 import tyrian.Html.*
 import scala.util.chaining.*
 
-object Step0Render:
+object TestPage:
+  def view2(model: Model): Html[Msg] =
+    div(
+      `class` := Common.Css.layout
+    )(
+      MobileHeaderView.view,
+      MobileMainView.view(model.bizSector),
+      MobileFooterView.view(
+        BizSectorPipe.cssFooter(
+          model.bizSector.map(d => d.isClick).contains(true)
+        )
+      )(model)
+    )
 
   def render(model: Model)(page: String): Html[Msg] =
     page match
@@ -15,8 +27,10 @@ object Step0Render:
           MobileHeaderView.view,
           MobileMainView.view(model.bizSector),
           MobileFooterView.view(
-            BizSectorPipe.cssFooter(
-              model.bizSector.map(d => d.isClick).contains(true)
+            (
+              BizSectorPipe.cssFooter(
+                model.bizSector.map(d => d.isClick).contains(true)
+              )
             )
           )(model)
         )
