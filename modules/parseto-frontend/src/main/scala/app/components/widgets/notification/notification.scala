@@ -28,7 +28,7 @@ object Noti:
                   img(
                     `class` := "w-[20px] h-[20px]",
                     src :=
-                      "https://s3-us-west-2.amazonaws.com/s.cdpn.io/14179/Messages-icon.png"
+                      "https://avatars.githubusercontent.com/u/138956767?s=200&v=4"
                   ),
                   div(
                     `class` := "flex flex-col h-[20px]  justify-center content-center"
