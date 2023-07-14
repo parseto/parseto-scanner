@@ -1,9 +1,6 @@
-package io.leisuremeta.chain.lmscan.frontend
 import tyrian.Html.*
 import tyrian.*
-import io.leisuremeta.chain.lmscan.frontend.Log.*
 import scala.util.chaining.*
-import io.leisuremeta.chain.lmscan.frontend.TestoLogic.plainInt
 import java.math.RoundingMode
 
 object TestoLogic:
@@ -19,27 +16,27 @@ object TestoLogic:
   formatter.setRoundingMode(RoundingMode.FLOOR)
   formatter.setMaximumFractionDigits(4)
 
-  val plainInt              = 1234512345
+  val plainInt = 1234512345
   val maybe_plainInt_string = "1234512345"
   val maybe_plainInt_broken = "123451234X"
 
   val plainLong = 1234512345L
 
-  val plainDouble     = 12345.12345
+  val plainDouble = 12345.12345
   val max_plainDouble = 12345.123451234512
 
-  val plainBigDecimal     = BigDecimal("12345123451234512345")
+  val plainBigDecimal = BigDecimal("12345123451234512345")
   val max_plainBigDecimal = BigDecimal(12345.123451234512)
 
-  def any2Str[T](d: T)    = s"$d"
+  def any2Str[T](d: T) = s"$d"
   def any2Option[T](d: T) = Some(d)
 
-  val strInt    = plainInt.pipe(any2Str)
+  val strInt = plainInt.pipe(any2Str)
   val strDouble = plainDouble.pipe(any2Str)
-  val strLong   = plainLong.pipe(any2Str)
+  val strLong = plainLong.pipe(any2Str)
 
-  def str2Int(d: String)        = d.toInt
-  def str2Long(d: String)       = d.toLong
+  def str2Int(d: String) = d.toInt
+  def str2Long(d: String) = d.toLong
   def str2BigDecimal(d: String) = BigDecimal(d)
 
   def number2sosu(n: Int)(targetnum: Int) = targetnum / Math.pow(10, n)
@@ -54,9 +51,9 @@ object TestoLogic:
       // sosu 1 / [올림,반올림,버림]
       case "12345.67891" =>
         Map(
-          "올림"  -> "12345.7",
+          "올림" -> "12345.7",
           "반올림" -> "12345.7",
-          "버림"  -> "12345.6",
+          "버림" -> "12345.6"
         )("올림")
 
       case _ => "11"

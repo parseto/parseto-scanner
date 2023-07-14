@@ -1,4 +1,4 @@
-package io.leisuremeta.chain.lmscan.frontend
+package parseto
 
 // TODO:: make multiple input log function
 object Log:

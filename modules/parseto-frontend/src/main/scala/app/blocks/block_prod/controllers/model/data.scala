@@ -1,7 +1,5 @@
 package parseto
 
-import io.leisuremeta.chain.lmscan.frontend.Log.log2
-
 case class BizSector(
     name: String,
     page: MobilePageCase = MobilePageCase.P01_all(),

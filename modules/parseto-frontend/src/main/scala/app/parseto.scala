@@ -7,16 +7,16 @@ import tyrian.*
 import scala.scalajs.js.annotation.*
 
 @JSExportTopLevel("TyrianApp")
-object Parseto extends TyrianApp[Msg, Model]:
+object Parseto extends TyrianApp[Msg, BlockModel]:
 
-  def init(flags: Map[String, String]): (Model, Cmd[IO, Msg]) =
-    Init.init(flags)
+  def init(flags: Map[String, String]): (BlockModel, Cmd[IO, Msg]) =
+    BlockInit.init(flags)
 
-  def update(model: Model): Msg => (Model, Cmd[IO, Msg]) =
-    Update.update(model)
+  def update(model: BlockModel): Msg => (BlockModel, Cmd[IO, Msg]) =
+    BlockUpdate.update(model)
 
-  def view(model: Model): Html[Msg] =
-    View.view(model)
+  def view(model: BlockModel): Html[Msg] =
+    BlockView.view(model)
 
-  def subscriptions(model: Model): Sub[IO, Msg] =
-    Subscriptions.subscriptions(model)
+  def subscriptions(model: BlockModel): Sub[IO, Msg] =
+    BlockSubscriptions.subscriptions(model)

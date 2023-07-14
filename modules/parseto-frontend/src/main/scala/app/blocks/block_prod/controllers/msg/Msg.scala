@@ -4,8 +4,6 @@ import io.circe.Json
 import org.scalajs.dom.Element
 import scalajs.js
 
-sealed trait Msg
-
 enum MobilePageMsg extends Msg:
   case PreUpdate(page: MobilePageCase)
   case Next

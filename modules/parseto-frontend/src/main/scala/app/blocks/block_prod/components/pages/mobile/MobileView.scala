@@ -20,3 +20,5 @@ object MobileView:
 
   def view(model: Model): Html[Msg] =
     Pages.render(model)
+    // div("")
+    // P0_IntroView.view(model)
