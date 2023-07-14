@@ -11,5 +11,6 @@ object View:
       div(
         PageView.view(model)
       ),
-      Clock.view(model)
-    )(0)
+      Clock.view(model),
+      PureView.view(model)
+    )(2)
