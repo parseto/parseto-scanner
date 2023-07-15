@@ -18,12 +18,12 @@ object BlockView:
       ),
       div(
       )(
-        List(
-          PageView.view(model.prodModel),
-          PureView.view(model.pureModel),
-          div()("3")
-        )(
-          model.blockPointer
-        )
+        model.blockPointer match
+          case 0 =>
+            ClonePageView.view(model.cloneModel)
+          case 1 =>
+            PureView.view(model.pureModel)
+          case _ =>
+            PageView.view(model.prodModel)
       )
     )
