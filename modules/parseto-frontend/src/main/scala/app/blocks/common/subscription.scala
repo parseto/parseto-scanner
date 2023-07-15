@@ -10,11 +10,9 @@ import concurrent.duration.DurationInt
 
 object BlockSubscriptions:
   def subscriptions(model: BlockModel): Sub[IO, Msg] =
-    // model.pointer == 1 match
-    //   case true =>
-    //     Sub.every[IO](1.second, "clock-ticks").map(RealTimeMsg.Tick.apply)
-    //   case false =>
-    Sub.None
+    model.blockPointer match
+      case 0 => ProdModelSubscriptions.subscriptions(model.prodModel)
+      case _ => Sub.None
 
   // Sub.Batch(
   //   Option(Dom.select("dom-input")) match
