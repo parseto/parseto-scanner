@@ -16,7 +16,8 @@ object BlockInit:
           ),
           pointer = 1,
           bizSector = BizSectorInit.value
-        )
+        ),
+        pureModel = PureModel(pointer = 0)
       ),
       Cmd.None
     )

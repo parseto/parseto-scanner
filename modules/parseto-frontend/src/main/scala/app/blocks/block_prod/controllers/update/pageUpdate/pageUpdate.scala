@@ -10,7 +10,6 @@ import app.parseto.common.function.logs.log2
 object PageUpdate:
   def update(model: BlockModel): MobilePageMsg => (BlockModel, Cmd[IO, Msg]) =
     case MobilePageMsg.PreUpdate(page: MobilePageCase) =>
-      log2("모바일1")(page)
       page match
         case _ =>
           (

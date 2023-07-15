@@ -1,12 +1,8 @@
 package parseto
 import tyrian.Html.*
-// import cats.effect.IO
-// import org.scalajs.dom.*
 import tyrian.*
 import cats.effect.IO
 import concurrent.duration.DurationInt
-
-// import scala.util.chaining.*
 
 object ProdModelSubscriptions:
   def subscriptions(model: ProdModel): Sub[IO, Msg] =

@@ -16,4 +16,7 @@ object BlockUpdate:
     case tickMsg: RealTimeMsg =>
       RealTimeUpdate.update(model)(tickMsg)
 
+    case purePageMsg: PurePageMsg =>
+      PureModelUpdate.update(model)(purePageMsg)
+
     // case blockMsg: ProdMsg    => BlockUpdate.update(model)(blockMsg)

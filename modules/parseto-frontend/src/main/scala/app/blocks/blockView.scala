@@ -20,7 +20,7 @@ object BlockView:
       )(
         List(
           PageView.view(model.prodModel),
-          PureView.view(model.prodModel),
+          PureView.view(model.pureModel),
           div()("3")
         )(
           model.blockPointer

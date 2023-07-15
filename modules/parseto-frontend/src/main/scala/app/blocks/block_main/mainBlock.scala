@@ -9,5 +9,5 @@ object MainBlockView:
   def view(model: ProdModel): Html[Msg] =
     div(
     )(
-      List(ProdView.view(model), PureView.view(model), div()("3"))(1)
+      // List(ProdView.view(model), PureView.view(model), div()("3"))(1)
     )
