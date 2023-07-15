@@ -6,7 +6,7 @@ import scala.util.chaining.*
 
 object PageView:
 
-  def view(model: Model): Html[Msg] =
+  def view(model: ProdModel): Html[Msg] =
     div(
       `class` := s"flex justify-between w-full h-[750px] px-40 pt-10 relative"
     )(

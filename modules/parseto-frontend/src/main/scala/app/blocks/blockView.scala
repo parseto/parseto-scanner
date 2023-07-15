@@ -18,15 +18,12 @@ object BlockView:
       ),
       div(
       )(
-        // List(div("11"), div("2"), div()("3"))(
-        //   model.blockPointer
-        // )
-        // List(PageView.view(model.prodModel), div("2"), div()("3"))(
-        //   model.blockPointer
-        // )
-        PageView.view(model.prodModel)
-        // List(div("2"), div("2"), div()("3"))(
-        //   model.blockPointer
-        // )
+        List(
+          PageView.view(model.prodModel),
+          PureView.view(model.prodModel),
+          div()("3")
+        )(
+          model.blockPointer
+        )
       )
     )

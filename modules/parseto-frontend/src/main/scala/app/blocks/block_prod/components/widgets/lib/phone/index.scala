@@ -6,7 +6,7 @@ import tyrian.Html.*
 import app.parseto.common._api.*
 
 object Phone:
-  def view(model: Model) =
+  def view(model: ProdModel) =
     List(
       div(`class` := "galuxy-note-10")(
         b("Camera"),

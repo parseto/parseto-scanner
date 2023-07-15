@@ -5,7 +5,7 @@ import tyrian.Html.*
 import scala.util.chaining.*
 
 object _P01_all:
-  def view(model: Model): Html[Msg] =
+  def view(model: ProdModel): Html[Msg] =
     div(`class` := "galuxy-note-10")(
       b("Camera"),
       div(

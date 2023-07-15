@@ -6,7 +6,7 @@ import scala.util.chaining.*
 
 object PureView:
 
-  def view(model: Model): Html[Msg] =
+  def view(model: ProdModel): Html[Msg] =
     List(
       _P0.view(model),
       _P01_all.view(model),

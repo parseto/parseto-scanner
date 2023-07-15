@@ -6,7 +6,7 @@ import scala.util.chaining.*
 
 object P01_medi:
 
-  def view(model: Model): Html[Msg] =
+  def view(model: ProdModel): Html[Msg] =
     div(`class` := "galuxy-note-10")(
       b("Camera"),
       div(

@@ -6,6 +6,6 @@ import tyrian.Html.*
 
 object NavView:
 
-  def view(model: Model): Html[Msg] =
+  def view(model: ProdModel): Html[Msg] =
     div(`class` := s"")(
     )

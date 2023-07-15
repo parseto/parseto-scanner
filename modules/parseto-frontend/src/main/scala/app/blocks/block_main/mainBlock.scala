@@ -6,7 +6,7 @@ import scala.util.chaining.*
 
 object MainBlockView:
 
-  def view(model: Model): Html[Msg] =
+  def view(model: ProdModel): Html[Msg] =
     div(
     )(
       List(ProdView.view(model), PureView.view(model), div()("3"))(1)

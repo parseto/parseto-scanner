@@ -6,7 +6,7 @@ import scalajs.js
 
 import tyrian.Html
 
-final case class Model(
+final case class ProdModel(
     appStates: List[StateCase],
     pointer: Int,
     bizSector: List[BizSector],

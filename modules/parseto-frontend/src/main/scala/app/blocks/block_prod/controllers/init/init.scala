@@ -3,9 +3,9 @@ import tyrian.*
 import cats.effect.IO
 
 object Init:
-  def init(flags: Map[String, String]): (Model, Cmd[IO, Msg]) =
+  def init(flags: Map[String, String]): (ProdModel, Cmd[IO, Msg]) =
     (
-      Model(
+      ProdModel(
         appStates = List(
           StateCase(
             mobilePageCase = MobilePageCase.P0(),

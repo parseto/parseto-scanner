@@ -7,7 +7,7 @@ object BlockInit:
     (
       BlockModel(
         blockPointer = 0,
-        prodModel = Model(
+        prodModel = ProdModel(
           appStates = List(
             StateCase(
               mobilePageCase = MobilePageCase.P0(),

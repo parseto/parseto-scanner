@@ -9,7 +9,7 @@ import concurrent.duration.DurationInt
 // import scala.util.chaining.*
 
 object ProdModelSubscriptions:
-  def subscriptions(model: Model): Sub[IO, Msg] =
+  def subscriptions(model: ProdModel): Sub[IO, Msg] =
     model.pointer == 1 match
       case true =>
         Sub.every[IO](1.second, "clock-ticks").map(RealTimeMsg.Tick.apply)

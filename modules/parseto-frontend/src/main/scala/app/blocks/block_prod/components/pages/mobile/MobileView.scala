@@ -6,7 +6,7 @@ import scala.util.chaining.*
 import parseto.ModelPipe.find_current_PageCase
 
 object Pages:
-  def render(model: Model): Html[Msg] =
+  def render(model: ProdModel): Html[Msg] =
     find_current_PageCase(model) match
       case page: MobilePageCase.P0       => P0_IntroView.view(model)
       case page: MobilePageCase.P01_all  => P01_all.view(model)
@@ -18,7 +18,7 @@ object MobileView:
   def layout() =
     div()
 
-  def view(model: Model): Html[Msg] =
+  def view(model: ProdModel): Html[Msg] =
     Pages.render(model)
     // div("")
     // P0_IntroView.view(model)

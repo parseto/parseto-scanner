@@ -6,7 +6,7 @@ import tyrian.Html.*
 import app.parseto.common._api.*
 
 object ProdView:
-  def view(model: Model): Html[Msg] =
+  def view(model: ProdModel): Html[Msg] =
     List(
       div(
         PageView.view(model)

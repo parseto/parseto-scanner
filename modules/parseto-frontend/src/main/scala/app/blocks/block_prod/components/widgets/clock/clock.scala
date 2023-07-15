@@ -12,7 +12,7 @@ import concurrent.duration.DurationInt
 import app.parseto.common.function.logs.log2
 
 object Clock:
-  def view(model: Model) =
+  def view(model: ProdModel) =
     List(
       {
         // val angle = model.time.getSeconds() * 2 * math.Pi / 60 - math.Pi / 2

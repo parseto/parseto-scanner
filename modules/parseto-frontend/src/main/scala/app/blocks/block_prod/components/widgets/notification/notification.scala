@@ -11,7 +11,7 @@ import scalajs.js
 import concurrent.duration.DurationInt
 
 object Noti:
-  def view(model: Model) =
+  def view(model: ProdModel) =
     div(`class` := "flex justify-center pt-10 ")(
       div(
         `class` := " flex flex-col  content-center space-y-4"

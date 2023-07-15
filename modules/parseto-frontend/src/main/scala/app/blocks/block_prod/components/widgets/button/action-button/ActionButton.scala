@@ -6,7 +6,7 @@ import scala.util.chaining.*
 import parseto.ModelPipe.*
 
 object ActionButton:
-  def left(model: Model) =
+  def left(model: ProdModel) =
     span(
       `class` := "cursor-pointer hover:bg-green-600/40",
       onClick(
@@ -22,7 +22,7 @@ object ActionButton:
     )(
       "Left action button "
     )
-  def right(model: Model) =
+  def right(model: ProdModel) =
     span(
       `class` := "cursor-pointer hover:bg-green-600/40",
       onClick(

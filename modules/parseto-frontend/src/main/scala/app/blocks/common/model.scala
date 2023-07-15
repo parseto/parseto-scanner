@@ -8,5 +8,5 @@ import tyrian.Html
 
 final case class BlockModel(
     blockPointer: Int,
-    prodModel: Model
+    prodModel: ProdModel
 )
