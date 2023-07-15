@@ -7,11 +7,11 @@ import tyrian.*
 import cats.effect.IO
 
 object StepUpdate:
-  def update(model: Model): StepMsg => (Model, Cmd[IO, Msg]) =
+  def update(model: BlockModel): StepMsg => (BlockModel, Cmd[IO, Msg]) =
     case StepMsg.StepUpdate(step: Int) =>
       (
         model.copy(
-          step = step
+          prodModel = model.prodModel.copy(step = step)
         ),
         Cmd.None
       )

@@ -9,8 +9,8 @@ object P0_IntroView:
     div(`class` := "galuxy-note-10")(
       b("Camera"),
       s(
-        // Clock.view(model),
-        // Noti.view(model)
+        Clock.view(model),
+        Noti.view(model)
       ),
       ActionButton.left(model),
       ActionButton.right(model)

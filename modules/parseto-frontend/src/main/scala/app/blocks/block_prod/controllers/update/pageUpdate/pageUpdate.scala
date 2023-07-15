@@ -8,19 +8,22 @@ import cats.effect.IO
 import app.parseto.common.function.logs.log2
 
 object PageUpdate:
-  def update(model: Model): MobilePageMsg => (Model, Cmd[IO, Msg]) =
+  def update(model: BlockModel): MobilePageMsg => (BlockModel, Cmd[IO, Msg]) =
     case MobilePageMsg.PreUpdate(page: MobilePageCase) =>
+      log2("모바일1")(page)
       page match
         case _ =>
           (
             model.copy(
-              appStates = model.appStates ++ Seq(
-                StateCase(
-                  number = ModelPipe.get_latest_number(model) + 1,
-                  mobilePageCase = page
-                )
-              ),
-              pointer = ModelPipe.get_latest_number(model) + 1
+              prodModel = model.prodModel.copy(
+                appStates = model.prodModel.appStates ++ Seq(
+                  StateCase(
+                    number = ModelPipe.get_latest_number(model.prodModel) + 1,
+                    mobilePageCase = page
+                  )
+                ),
+                pointer = ModelPipe.get_latest_number(model.prodModel) + 1
+              )
             ),
             Cmd.None
           )
@@ -30,7 +33,7 @@ object PageUpdate:
         ),
         Cmd.Emit(
           MobilePageMsg.PreUpdate(
-            model.bizSector.filter(d => d.isClick)(0).page
+            model.prodModel.bizSector.filter(d => d.isClick)(0).page
           )
         )
       )
