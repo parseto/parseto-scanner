@@ -1,8 +1,2 @@
-#### Run ScalaJs
-sbt ~lmscanFrontend/fastLinkJS
-
-#### Run Frontend
-```md
-cd modules/lmscan-frontend
-yarn start
-```
+#### parseto scanner service
+- 개발, 디자인 외주 중개서비스
