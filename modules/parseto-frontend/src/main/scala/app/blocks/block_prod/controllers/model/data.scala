@@ -41,3 +41,16 @@ object BizSectorPipe:
     BizSectorMsg.BizSectorUpdate(
       name
     )
+
+case class TalkSector(
+    name: String,
+    // page: MobilePageCase = MobilePageCase.P01_all(),
+    url: String = "",
+    isClick: Boolean = false
+)
+
+object TalkSectorInit:
+  val value = List(
+    TalkSector("개발1:1", "link", true),
+    TalkSector("디자인")
+  )

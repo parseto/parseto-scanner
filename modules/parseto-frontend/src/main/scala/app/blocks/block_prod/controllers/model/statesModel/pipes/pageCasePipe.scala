@@ -8,14 +8,14 @@ object PageCasePipe:
       case page: MobilePageCase.P0       => page.name
       case page: MobilePageCase.P01_all  => page.name
       case page: MobilePageCase.P01_medi => page.name
-      case page: MobilePageCase.P02      => page.name
+      case page: MobilePageCase.P02_all  => page.name
 
   def in_actionButton(mobilePageCase: MobilePageCase) =
     mobilePageCase match
       case page: MobilePageCase.P0       => page.actionButton
       case page: MobilePageCase.P01_all  => page.actionButton
       case page: MobilePageCase.P01_medi => page.actionButton
-      case page: MobilePageCase.P02      => page.actionButton
+      case page: MobilePageCase.P02_all  => page.actionButton
 
       // case MobilePageCase.Page_Nopage(name)  => name
 

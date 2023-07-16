@@ -3,7 +3,7 @@ package parseto
 val MobilePageCaseMap = Map(
   0 -> MobilePageCase.P0(),
   1 -> MobilePageCase.P01_all(),
-  2 -> MobilePageCase.P02()
+  2 -> MobilePageCase.P02_all()
 )
 
 case class Move(prev: Int = 0, cur: Int = 0, next: Int = 0)
@@ -26,7 +26,7 @@ enum MobilePageCase:
       actionButton: Move = Move(1, 1, 0)
   ) extends MobilePageCase
 
-  case P02(
+  case P02_all(
       name: String = "init",
       url: String = "Observer",
       actionButton: Move = Move(0, 2, 0)
