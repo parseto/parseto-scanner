@@ -16,7 +16,8 @@ object BlockInit:
           ),
           pointer = 1,
           bizSector = BizSectorInit.value,
-          talkSector = TalkSectorInit.value
+          talkSector = TalkSectorInit.value,
+          profileSector = ProfileSectorInit.value
         ),
         pureModel = PureModel(pointer = 0),
         cloneModel = CloneModel(pointer = 0)

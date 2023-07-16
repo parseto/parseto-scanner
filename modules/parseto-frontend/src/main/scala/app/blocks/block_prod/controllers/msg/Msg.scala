@@ -11,6 +11,12 @@ enum MobilePageMsg extends Msg:
 enum BizSectorMsg extends Msg:
   case BizSectorUpdate(name: String)
 
+enum TalkSectorMsg extends Msg:
+  case TalkSectorUpdate(name: String)
+
+enum ProfileSectorMsg extends Msg:
+  case ProfileSectorUpdate(name: String)
+
 enum StepMsg extends Msg:
   case StepUpdate(step: Int)
 

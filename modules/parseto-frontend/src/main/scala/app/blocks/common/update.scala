@@ -10,6 +10,12 @@ object BlockUpdate:
     case bizSectorMsg: BizSectorMsg =>
       BizSectorUpdate.update(model)(bizSectorMsg)
 
+    case talkSectorMsg: TalkSectorMsg =>
+      TalkSectorUpdate.update(model)(talkSectorMsg)
+
+    case profileSectorMsg: ProfileSectorMsg =>
+      ProfileSectorUpdate.update(model)(profileSectorMsg)
+
     case stepMsg: StepMsg =>
       StepUpdate.update(model)(stepMsg)
 

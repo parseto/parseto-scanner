@@ -11,6 +11,7 @@ final case class ProdModel(
     pointer: Int,
     bizSector: List[BizSector],
     talkSector: List[TalkSector],
+    profileSector: List[ProfileSector],
     step: Int = 0,
     time: scala.scalajs.js.Date = new js.Date(),
     init_time: scala.scalajs.js.Date = new js.Date()

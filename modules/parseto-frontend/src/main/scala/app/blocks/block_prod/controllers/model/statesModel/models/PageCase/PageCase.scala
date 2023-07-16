@@ -20,6 +20,7 @@ enum MobilePageCase:
       url: String = "Observer",
       actionButton: Move = Move(0, 1, 1)
   ) extends MobilePageCase
+
   case P01_medi(
       name: String = "init",
       url: String = "Observer",
@@ -27,6 +28,18 @@ enum MobilePageCase:
   ) extends MobilePageCase
 
   case P02_all(
+      name: String = "init",
+      url: String = "Observer",
+      actionButton: Move = Move(0, 2, 0)
+  ) extends MobilePageCase
+
+  case P021_all_dev(
+      name: String = "init",
+      url: String = "Observer",
+      actionButton: Move = Move(0, 2, 0)
+  ) extends MobilePageCase
+
+  case P021x_linkedPage(
       name: String = "init",
       url: String = "Observer",
       actionButton: Move = Move(0, 2, 0)
