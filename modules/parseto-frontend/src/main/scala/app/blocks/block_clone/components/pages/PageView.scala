@@ -38,7 +38,7 @@ object ClonePageView:
             div(`class` := "grid grid-cols-3 gap-4 text-sm text-gray-600")(
               button(
                 `class` := "h-16 border border-gray-300 rounded-lg hover:font-bold hover:border-blue-300 bg-blue-600 text-white"
-              )("의료"),
+              )("MEDI"),
               button(
                 `class` := "h-16 border border-gray-300 rounded-lg hover:font-bold hover:border-blue-300"
               ),

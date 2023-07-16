@@ -2,3 +2,5 @@
 **/dist
 **/.parcel-cache
 _*
+**/**/*.zip
+modules/.DS_Store

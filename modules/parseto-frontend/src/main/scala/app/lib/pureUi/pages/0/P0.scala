@@ -5,8 +5,9 @@ import tyrian.Html.*
 import scala.util.chaining.*
 
 object _P0:
-  def view: Html[Msg] =
-    div(`class` := "galuxy-note-10")(
+  def view =
+    // div(`class` := "galuxy-note-10")(
+    List(
       b("Camera"),
       s(
         div("2 : 52"),
@@ -66,11 +67,12 @@ object _P0:
             )
           )
         )
-      ),
-      span(`class` := "cursor-pointer hover:bg-green-600/40")(
-        "Left action button"
-      ),
-      span(`class` := "cursor-pointer hover:bg-green-600/40")(
-        "right action button"
       )
+      // )
+      // span(`class` := "cursor-pointer hover:bg-green-600/40")(
+      //   "Left action button"
+      // ),
+      // span(`class` := "cursor-pointer hover:bg-green-600/40")(
+      //   "right action button"
+      // )
     )

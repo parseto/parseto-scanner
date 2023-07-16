@@ -20,10 +20,10 @@ object BlockView:
       )(
         model.blockPointer match
           case 0 =>
-            ClonePageView.view(model.cloneModel)
+            PageView.view(model.prodModel)
           case 1 =>
             PureView.view(model.pureModel)
           case _ =>
-            PageView.view(model.prodModel)
+            ClonePageView.view(model.cloneModel)
       )
     )
