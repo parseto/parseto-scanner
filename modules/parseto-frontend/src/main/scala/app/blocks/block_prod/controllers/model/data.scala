@@ -77,13 +77,13 @@ case class ProfileSector(
     name: String,
     page: MobilePageCase = MobilePageCase.P021x_linkedPage(),
     isClick: Boolean = false,
-    url: String = "https://open.kakao.com/o/seBeGPuc"
+    url: String = "https://open.kakao.com/o/sCJSFJvf"
 )
 
 object ProfileSectorInit:
   val value = List(
     ProfileSector("파스투소프트", MobilePageCase.P021x_linkedPage(), true),
-    ProfileSector("디자인")
+    ProfileSector("파스투디자인")
   )
 
 object ProfileSectorPipe:

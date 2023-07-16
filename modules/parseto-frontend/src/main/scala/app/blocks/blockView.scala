@@ -10,12 +10,13 @@ object BlockView:
   def view(model: BlockModel): Html[Msg] =
     log2("안녕")("model.prodModel")
     div(
+      `class` := "pt-10"
     )(
-      div(`class` := "flex bg-red-50 justify-between w-[100px]")(
-        div(onClick(CommonMsg.UpdateBlockPointer(0)))("1"),
-        div(onClick(CommonMsg.UpdateBlockPointer(1)))("2"),
-        div(onClick(CommonMsg.UpdateBlockPointer(2)))("3")
-      ),
+      // div(`class` := "flex bg-red-50 justify-between w-[100px]")(
+      //   div(onClick(CommonMsg.UpdateBlockPointer(0)))("1"),
+      //   div(onClick(CommonMsg.UpdateBlockPointer(1)))("2"),
+      //   div(onClick(CommonMsg.UpdateBlockPointer(2)))("3")
+      // ),
       div(
       )(
         model.blockPointer match
