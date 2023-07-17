@@ -21,6 +21,12 @@ enum MobilePageCase:
       actionButton: Move = Move(0, 1, 1)
   ) extends MobilePageCase
 
+  case P01x_matchSamples(
+      name: String = "init",
+      url: String = "Observer",
+      actionButton: Move = Move(0, 1, 1)
+  ) extends MobilePageCase
+
   case P01_medi(
       name: String = "init",
       url: String = "Observer",

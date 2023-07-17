@@ -17,6 +17,9 @@ enum TalkSectorMsg extends Msg:
 enum ProfileSectorMsg extends Msg:
   case ProfileSectorUpdate(name: String)
 
+enum SampleSectorMsg extends Msg:
+  case SampleSectorUpdate(name: String)
+
 enum StepMsg extends Msg:
   case StepUpdate(step: Int)
 

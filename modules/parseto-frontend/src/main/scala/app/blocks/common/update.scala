@@ -16,6 +16,9 @@ object BlockUpdate:
     case profileSectorMsg: ProfileSectorMsg =>
       ProfileSectorUpdate.update(model)(profileSectorMsg)
 
+    case sampleSectorMsg: SampleSectorMsg =>
+      SampleSectorUpdate.update(model)(sampleSectorMsg)
+
     case stepMsg: StepMsg =>
       StepUpdate.update(model)(stepMsg)
 

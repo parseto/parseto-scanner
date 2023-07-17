@@ -12,6 +12,7 @@ final case class ProdModel(
     bizSector: List[BizSector],
     talkSector: List[TalkSector],
     profileSector: List[ProfileSector],
+    sampleSectorMap: Map[String, List[SampleSector]],
     step: Int = 0,
     time: scala.scalajs.js.Date = new js.Date(),
     init_time: scala.scalajs.js.Date = new js.Date()

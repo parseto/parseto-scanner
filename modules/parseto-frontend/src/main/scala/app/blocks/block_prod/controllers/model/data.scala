@@ -2,13 +2,13 @@ package parseto
 
 case class BizSector(
     name: String,
-    page: MobilePageCase = MobilePageCase.P01_all(),
+    page: MobilePageCase = MobilePageCase.P01x_matchSamples(),
     isClick: Boolean = false
 )
 
 object BizSectorInit:
   val value = List(
-    BizSector("의료", MobilePageCase.P01_medi(), true),
+    BizSector("의료", MobilePageCase.P01x_matchSamples(), true),
     BizSector("법률"),
     BizSector("쇼핑몰"),
     BizSector("뉴스"),
@@ -103,5 +103,44 @@ object ProfileSectorPipe:
 
   def msg(name: String) =
     ProfileSectorMsg.ProfileSectorUpdate(
+      name
+    )
+
+case class SampleSector(
+    name: String,
+    page: MobilePageCase = MobilePageCase.P021x_linkedPage(),
+    isClick: Boolean = false,
+    url: String = ""
+)
+
+object SampleInit:
+  val value = Map(
+    "의료" -> List(
+      SampleSector("굿닥", MobilePageCase.P021x_linkedPage(), true),
+      SampleSector("닥터나우")
+    ),
+    "랜덤" -> List(
+      SampleSector("한국", MobilePageCase.P021x_linkedPage(), true),
+      SampleSector("중국")
+    )
+  )
+
+object SampleSectorPipe:
+  val css =
+    Map(
+      true -> "h-16 border border-gray-300 rounded-lg hover:font-bold hover:border-blue-300 bg-blue-600 text-white",
+      false -> "h-16 border border-gray-300 rounded-lg hover:font-bold hover:border-blue-300 "
+    )
+
+  val img = ""
+
+  val cssFooter =
+    Map(
+      true -> "left-0 w-full flex py-4 justify-center font-medium bg-blue-600 text-white rounded-b-[20px]",
+      false -> "left-0 w-full flex py-4 justify-center font-medium bg-blue-300 text-white rounded-b-[20px]"
+    )
+
+  def msg(name: String) =
+    SampleSectorMsg.SampleSectorUpdate(
       name
     )
