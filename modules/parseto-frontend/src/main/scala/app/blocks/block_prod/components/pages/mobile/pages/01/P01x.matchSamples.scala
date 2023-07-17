@@ -29,7 +29,7 @@ object P01x_matchSamples:
   def view(model: ProdModel): Html[Msg] =
     val name = model.bizSector.filter(d => d.isClick)(0).name match
       case "의료" => "의료"
-      case _    => "x"
+      case _    => "랜덤"
 
     log2("name")(model.bizSector.filter(d => d.isClick)(0).name)
     // val name = "medi"
