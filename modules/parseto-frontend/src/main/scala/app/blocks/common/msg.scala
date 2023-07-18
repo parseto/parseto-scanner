@@ -8,6 +8,13 @@ trait Msg
 enum CommonMsg extends Msg:
   case UpdateBlockPointer(blockPointer: Int)
 
+enum ApiMsg extends Msg:
+  case GetData(url: String)
+
+  case Error(url: String)
+
+  case OkTx(v: List[Transaction])
+
 // trait Msg
 
 // object Msg:

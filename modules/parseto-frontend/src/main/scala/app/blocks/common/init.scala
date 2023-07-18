@@ -21,7 +21,8 @@ object BlockInit:
           sampleSectorMap = SampleInit.value
         ),
         pureModel = PureModel(pointer = 0),
-        cloneModel = CloneModel(pointer = 0)
+        cloneModel = CloneModel(pointer = 0),
+        apiModel = ApiModel(txs = List())
       ),
-      Cmd.None
+      Cmd.Emit(ApiMsg.GetData("http://localhost:3000/tx"))
     )

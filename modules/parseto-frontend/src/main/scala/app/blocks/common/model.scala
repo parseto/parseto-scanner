@@ -10,5 +10,6 @@ final case class BlockModel(
     blockPointer: Int,
     prodModel: ProdModel,
     pureModel: PureModel,
-    cloneModel: CloneModel
+    cloneModel: CloneModel,
+    apiModel: ApiModel
 )

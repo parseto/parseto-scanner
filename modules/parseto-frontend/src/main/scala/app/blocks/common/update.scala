@@ -7,6 +7,14 @@ object BlockUpdate:
     case commonMsg: CommonMsg   => CommonUpdate.update(model)(commonMsg)
     case pageMsg: MobilePageMsg => PageUpdate.update(model)(pageMsg)
 
+    // ApiBlock
+    case apiMsg: ApiMsg =>
+      ApiUpdate.update(model)(apiMsg)
+
+    // case okMsg: OkMsg =>
+    //   OkUpdate.update(model)(okMsg)
+
+    // ProdBlock
     case bizSectorMsg: BizSectorMsg =>
       BizSectorUpdate.update(model)(bizSectorMsg)
 
@@ -24,6 +32,8 @@ object BlockUpdate:
 
     case tickMsg: RealTimeMsg =>
       RealTimeUpdate.update(model)(tickMsg)
+
+    //  PureBlock
 
     case purePageMsg: PurePageMsg =>
       PureModelUpdate.update(model)(purePageMsg)
