@@ -8,7 +8,7 @@ object PageCasePipe:
       case page: MobilePageCase.P0                => page.name
       case page: MobilePageCase.P01_all           => page.name
       case page: MobilePageCase.P01x_matchSamples => page.name
-      case page: MobilePageCase.P01_medi          => page.name
+      case page: MobilePageCase.P01xy             => page.name
       case page: MobilePageCase.P02_all           => page.name
       case page: MobilePageCase.P021_all_dev      => page.name
       case page: MobilePageCase.P021x_linkedPage  => page.name
@@ -18,7 +18,7 @@ object PageCasePipe:
       case page: MobilePageCase.P0                => page.actionButton
       case page: MobilePageCase.P01_all           => page.actionButton
       case page: MobilePageCase.P01x_matchSamples => page.actionButton
-      case page: MobilePageCase.P01_medi          => page.actionButton
+      case page: MobilePageCase.P01xy             => page.actionButton
       case page: MobilePageCase.P02_all           => page.actionButton
       case page: MobilePageCase.P021_all_dev      => page.actionButton
       case page: MobilePageCase.P021x_linkedPage  => page.actionButton

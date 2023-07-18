@@ -7,9 +7,4 @@ import app.parseto.common._api.*
 
 object ProdView:
   def view(model: ProdModel): Html[Msg] =
-    List(
-      div(
-        PageView.view(model)
-      ),
-      Clock.view(model)
-    )(0)
+    PageView.view(model)

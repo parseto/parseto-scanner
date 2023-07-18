@@ -116,11 +116,27 @@ case class SampleSector(
 object SampleInit:
   val value = Map(
     "의료" -> List(
-      SampleSector("굿닥", MobilePageCase.P021x_linkedPage(), true),
-      SampleSector("닥터나우")
+      SampleSector(
+        "굿닥",
+        MobilePageCase.P01xy(),
+        true,
+        "https://clinicmarket.goodoc.co.kr/"
+      ),
+      SampleSector(
+        "위키피디아",
+        MobilePageCase.P01xy(),
+        false,
+        "https://wikipedia.org"
+      ),
+      SampleSector(
+        "+",
+        MobilePageCase.P01xy(),
+        false,
+        "https://wikipedia.org"
+      )
     ),
     "랜덤" -> List(
-      SampleSector("한국", MobilePageCase.P021x_linkedPage(), true),
+      SampleSector("한국", MobilePageCase.P01xy(), true),
       SampleSector("중국")
     )
   )

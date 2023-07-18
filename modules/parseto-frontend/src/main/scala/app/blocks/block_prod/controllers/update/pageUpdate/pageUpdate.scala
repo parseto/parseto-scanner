@@ -36,6 +36,15 @@ object PageUpdate:
             model.prodModel.pipe(find_current_PageCase) match
               case page: MobilePageCase.P01_all =>
                 model.prodModel.bizSector.filter(d => d.isClick)(0).page
+
+              case page: MobilePageCase.P01x_matchSamples =>
+                model.prodModel
+                  .sampleSectorMap(
+                    model.prodModel.bizSector.filter(d => d.isClick)(0).name
+                  )
+                  .filter(d => d.isClick)(0)
+                  .page
+
               case page: MobilePageCase.P02_all =>
                 model.prodModel.talkSector.filter(d => d.isClick)(0).page
 

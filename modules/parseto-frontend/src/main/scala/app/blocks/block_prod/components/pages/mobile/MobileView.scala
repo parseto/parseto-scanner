@@ -12,7 +12,7 @@ object Pages:
       case page: MobilePageCase.P01_all => P01_all.view(model)
       case page: MobilePageCase.P01x_matchSamples =>
         P01x_matchSamples.view(model)
-      case page: MobilePageCase.P01_medi         => P01_medi.view(model)
+      case page: MobilePageCase.P01xy            => P01xy.view(model)
       case page: MobilePageCase.P02_all          => P02_ALL.view(model)
       case page: MobilePageCase.P021_all_dev     => P021_all_dev.view(model)
       case page: MobilePageCase.P021x_linkedPage => P021x_linkedPage.view(model)
