@@ -14,6 +14,7 @@ enum ApiMsg extends Msg:
   case Error(url: String)
 
   case OkTx(v: List[Transaction])
+  case PubTxs(data: Json)
 
 // trait Msg
 

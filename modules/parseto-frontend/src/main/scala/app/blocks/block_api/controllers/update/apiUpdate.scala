@@ -17,17 +17,30 @@ import scala.util.chaining.*
 object ApiUpdate:
   def update(model: BlockModel): ApiMsg => (BlockModel, Cmd[IO, ApiMsg]) =
     case ApiMsg.GetData(url) =>
-      (model.copy(), getInitData(url))
+      (model.copy(), getApiData(url))
 
     case ApiMsg.OkTx(txs) =>
       log2("txs")(txs)
       (model.copy(apiModel = model.apiModel.copy(txs = txs)), Cmd.None)
 
+    case ApiMsg.PubTxs(json) =>
+      json.as[List[Transaction]] match
+        case Right(v) =>
+          (
+            model.copy(apiModel = model.apiModel.copy(txs = v)),
+            Cmd.None
+          )
+        case Left(_) =>
+          (
+            model.copy(),
+            Cmd.Emit(ApiMsg.Error("Invalid transaction data"))
+          )
+
     case ApiMsg.Error(err) =>
       log2("error")(err)
       (model.copy(), Cmd.None)
 
-  def getInitData(url: String): Cmd[IO, ApiMsg] =
+  def getApiData(url: String): Cmd[IO, ApiMsg] =
     Http.send(
       Request
         .get(url)
