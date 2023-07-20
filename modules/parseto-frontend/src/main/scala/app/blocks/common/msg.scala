@@ -9,11 +9,12 @@ enum CommonMsg extends Msg:
   case UpdateBlockPointer(blockPointer: Int)
 
 enum ApiMsg extends Msg:
+  case PreUpdate(pagecase: ApiModelPageCase)
+  case Update(pubcase: PubCase)
   case GetData(url: String)
-
   case Error(url: String)
-
   case OkTx(v: List[Transaction])
+  case None
   case PubTxs(data: Json)
 
 // trait Msg

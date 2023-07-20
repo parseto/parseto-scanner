@@ -12,4 +12,5 @@ object ApiPageView:
     )(
       div("안녕"),
       div(model.txs.map(d => div(d.toString())))
+      // div(model..map(d => div(d.toString())))
     )

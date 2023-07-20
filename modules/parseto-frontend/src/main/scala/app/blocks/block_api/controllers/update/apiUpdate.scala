@@ -13,14 +13,49 @@ import scala.concurrent.duration.*
 import scala.scalajs.js.annotation.*
 import parseto.Log.log2
 import scala.util.chaining.*
+import parseto.ApiModelPipe.in_appStates
 
 object ApiUpdate:
   def update(model: BlockModel): ApiMsg => (BlockModel, Cmd[IO, ApiMsg]) =
-    case ApiMsg.GetData(url) =>
-      (model.copy(), getApiData(url))
+    case ApiMsg.PreUpdate(page) =>
+      (
+        model.copy(apiModel =
+          model.apiModel.copy(appStates =
+            model.apiModel.appStates ++ Seq(
+              ApiModelStateCase(
+                number = ApiModelPipe.get_latest_number(model.apiModel) + 1,
+                apiModelPageCase = page
+              )
+            )
+          )
+        ),
+        Cmd.Batch(
+          ApiPageCasePipe
+            .in_PubCases(page)
+            .map(pub =>
+              CmdPipe.getDataCmd(
+                pub,
+                model
+              ),
+            )
+        )
+      )
+    case ApiMsg.Update(pub) =>
+      (
+        model.copy(
+          apiModel = model.apiModel.copy(appStates =
+            model.apiModel
+              .pipe(in_appStates)
+              .map(
+                ApiModelStateCasePipe
+                  .update_PubData(pub, model.apiModel.appStates.length)
+              )
+          )
+        ),
+        Cmd.None
+      )
 
     case ApiMsg.OkTx(txs) =>
-      log2("txs")(txs)
       (model.copy(apiModel = model.apiModel.copy(txs = txs)), Cmd.None)
 
     case ApiMsg.PubTxs(json) =>
@@ -37,24 +72,10 @@ object ApiUpdate:
           )
 
     case ApiMsg.Error(err) =>
-      log2("error")(err)
       (model.copy(), Cmd.None)
 
-  def getApiData(url: String): Cmd[IO, ApiMsg] =
-    Http.send(
-      Request
-        .get(url)
-        .withTimeout(5.seconds),
-      Decoder[ApiMsg](
-        parseJson,
-        onError => ApiMsg.Error("error :: http connect error")
-      )
-    )
+    case ApiMsg.None =>
+      (model.copy(), Cmd.None)
 
-  def parseJson(res: Response): ApiMsg =
-    parse(res.body).pipe(log2("res.body")) match
-      case Left(_) => ApiMsg.Error("Invalid json response")
-      case Right(json) =>
-        json.as[List[Transaction]] match
-          case Right(v) => ApiMsg.OkTx(v)
-          case Left(_)  => ApiMsg.Error("Invalid transaction data")
+    case _ =>
+      (model.copy(), Cmd.None)

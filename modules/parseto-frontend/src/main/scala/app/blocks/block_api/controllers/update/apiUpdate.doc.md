@@ -28,11 +28,11 @@ object OnDataProcess:
       model: Model,
   ): Cmd[IO, Msg] =
     Http.send(
-      Request.get(url).withTimeout(30.seconds),
+      Request.get(get_api_link(pub, model)).withTimeout(30.seconds),
       UnderDataProcess.fromHttpResponse(pub),
     )
 
-``````
+```
 
 ```scala
 object Transactionboard:
@@ -50,20 +50,18 @@ object Transactionboard:
 
     case _ => (model, Cmd.None)
 
-  def httpPipe(url: String): Cmd[IO, Msg] =
+  def getInitData(url: String): Cmd[IO, Msg] =
     Http.send(
       Request
         .get(url)
         .withTimeout(5.seconds),
       Decoder[Msg](
-        ResponsePipe.onResponse(),
-        ResponsePi
+        parseJson,
+        onError => Msg.Error("error :: http connect error")
       )
     )
 
-  object ConnectionHandle: 
-  
-  def okPipeMsg(res: Response): Msg =
+  def parseJson(res: Response): Msg =
     parse(res.body) match
       case Left(_) => Msg.Error("Invalid json response")
       case Right(json) =>
@@ -71,15 +69,11 @@ object Transactionboard:
           case Right(v) => Msg.TxOk(v)
           case Left(_)  => Msg.Error("Invalid transaction data")
 
-  def errorPipeMsg: HttpError => Msg = onError => Msg.Error("http connect error")
-
-  def handle = Decoder[Msg](okPipeMsg(pub), errorPipeMsg)
-
 ```
 
 ```scala
 
 
-init 
+init
 |> model,pub,
 ```

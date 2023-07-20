@@ -3,9 +3,6 @@ import scala.util.chaining.*
 import scala.scalajs.js
 import app.PageCasePipe.*
 import app.StateCasePipe.*
-// import io.leisuremeta.chain.lmscan.frontend.PupCasePipe.*
-// import io.leisuremeta.chain.lmscan.frontend.PageCasePipe.*
-// import io.leisuremeta.chain.lmscan.frontend.StateCasePipe.*
 
 object ModelPipe:
   def in_appStates(model: Model) =
