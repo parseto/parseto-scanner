@@ -1,8 +1,6 @@
 package parseto
 import scala.util.chaining.*
 import scala.scalajs.js
-import parseto.PageCasePipe.*
-import parseto.StateCasePipe.*
 
 object ModelPipe:
   def in_appStates(model: ProdModel) =
@@ -11,7 +9,7 @@ object ModelPipe:
   def find_current_PageCase(model: ProdModel) =
     model
       .pipe(in_appStates)
-      .pipe(find_PageCase(model.pointer))
+      .pipe(ProdModelStateCasePipe.find_PageCase(model.pointer))
 
 // // def find_name(model: ProdModel) =
 // //   model
@@ -73,4 +71,4 @@ object ModelPipe:
   def get_latest_number(model: ProdModel): Int =
     model
       .pipe(in_appStates)
-      .pipe(StateCasePipe.find_latest_Number)
+      .pipe(ProdModelStateCasePipe.find_latest_Number)

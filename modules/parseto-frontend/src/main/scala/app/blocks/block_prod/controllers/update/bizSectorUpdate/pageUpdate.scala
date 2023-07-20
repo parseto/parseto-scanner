@@ -23,3 +23,10 @@ object BizSectorUpdate:
         ),
         Cmd.None
       )
+    case BizSectorMsg.BizSectorInit(bizs: List[BizSector]) =>
+      (
+        model.copy(
+          prodModel = model.prodModel.copy(bizSector = bizs)
+        ),
+        Cmd.None
+      )

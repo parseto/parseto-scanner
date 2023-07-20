@@ -8,7 +8,6 @@ import app.parseto.common.function.logs.log2
 object BlockView:
 
   def view(model: BlockModel): Html[Msg] =
-    log2("안녕")("model.prodModel")
     div(
       `class` := "pt-10"
     )(
@@ -22,7 +21,7 @@ object BlockView:
       )(
         model.blockPointer match
           case 0 =>
-            PageView.view(model.prodModel)
+            PageView.view(model.prodModel, model.apiModel)
           case 1 =>
             PureView.view(model.pureModel)
             ApiPageView.view(model.apiModel)

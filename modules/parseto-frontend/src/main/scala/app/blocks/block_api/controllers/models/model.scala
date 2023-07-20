@@ -9,7 +9,8 @@ import tyrian.Html
 final case class ApiModel(
     appStates: List[ApiModelStateCase] = List(ApiModelStateCase()),
     pointer: Int = 1,
-    txs: List[Transaction] = List(Transaction())
+    txs: List[Transaction] = List(Transaction()),
+    bizSector: List[BizSector] = BizSectorInit.value
 )
 
 case class ApiModelStateCase(

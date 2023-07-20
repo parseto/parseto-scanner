@@ -22,7 +22,7 @@ object BlockInit:
         ),
         pureModel = PureModel(pointer = 0),
         cloneModel = CloneModel(pointer = 0),
-        apiModel = ApiModel(txs = List())
+        apiModel = ApiModel()
       ),
       Cmd.Emit(ApiMsg.GetData("http://localhost:3000/tx"))
     )

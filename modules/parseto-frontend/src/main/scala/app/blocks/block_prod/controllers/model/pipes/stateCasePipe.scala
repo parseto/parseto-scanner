@@ -2,8 +2,7 @@ package parseto
 import scala.scalajs.js
 import scala.util.chaining.*
 
-// TODO:: go, pipe 함수로 redesign!
-object StateCasePipe:
+object ProdModelStateCasePipe:
   def in_pageCase(state: StateCase) = state.mobilePageCase
 
   def in_number(state: StateCase) = state.number

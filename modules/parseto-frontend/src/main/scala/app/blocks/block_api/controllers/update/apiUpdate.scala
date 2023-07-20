@@ -16,7 +16,7 @@ import scala.util.chaining.*
 import parseto.ApiModelPipe.in_appStates
 
 object ApiUpdate:
-  def update(model: BlockModel): ApiMsg => (BlockModel, Cmd[IO, ApiMsg]) =
+  def update(model: BlockModel): ApiMsg => (BlockModel, Cmd[IO, Msg]) =
     case ApiMsg.PreUpdate(page) =>
       (
         model.copy(apiModel =
@@ -44,16 +44,41 @@ object ApiUpdate:
     case ApiMsg.Update(pub) =>
       (
         model.copy(
-          apiModel = model.apiModel.copy(appStates =
-            model.apiModel
+          apiModel = model.apiModel.copy(
+            appStates = model.apiModel
               .pipe(in_appStates)
               .map(
                 ApiModelStateCasePipe
                   .update_PubData(pub, model.apiModel.appStates.length)
-              )
+              ),
+            bizSector = pub match
+              case pub: PubCase.ApiPub =>
+                pub.pub_m2.map(d => {
+                  val p =
+                    d.page match
+                      case "P01xy" => MobilePageCase.P01x_matchSamples()
+                      case _       => MobilePageCase.P01x_matchSamples()
+                  BizSector(d.name, p, d.isClick.toBoolean)
+                })
+              case _ => model.apiModel.bizSector
+              // List(BizSector())
           )
         ),
-        Cmd.None
+        pub match
+          case pub: PubCase.ApiPub =>
+            val bizs = pub.pub_m2.map(d => {
+              val p =
+                d.page match
+                  case "P01xy" => MobilePageCase.P01x_matchSamples()
+                  case _       => MobilePageCase.P01x_matchSamples()
+              BizSector(d.name, p, d.isClick.toBoolean)
+            })
+            Cmd.Emit(
+              BizSectorMsg.BizSectorInit(
+                bizs
+              )
+            )
+          case _ => Cmd.None
       )
 
     case ApiMsg.OkTx(txs) =>

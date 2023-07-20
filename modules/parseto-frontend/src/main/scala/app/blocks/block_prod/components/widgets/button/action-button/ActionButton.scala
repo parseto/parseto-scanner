@@ -14,7 +14,7 @@ object ActionButton:
           MobilePageCaseMap(
             model
               .pipe(find_current_PageCase)
-              .pipe(PageCasePipe.in_actionButton)
+              .pipe(ProdPageCasePipe.in_actionButton)
               .prev
           )
         )
@@ -30,7 +30,7 @@ object ActionButton:
           MobilePageCaseMap(
             model
               .pipe(find_current_PageCase)
-              .pipe(PageCasePipe.in_actionButton)
+              .pipe(ProdPageCasePipe.in_actionButton)
               .next
           )
         )

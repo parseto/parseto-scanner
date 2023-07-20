@@ -27,8 +27,8 @@ case class ApiData(
     isClick: String,
     url: String,
     category: String
-):
-  override def toString = s"${this.name} ${this.page}"
+)
+// override def toString = s"to string ${this.name} ${this.page}"
 
 object ApiData:
   def apply(): ApiData =

@@ -1,7 +1,7 @@
 package parseto
 import scala.util.chaining.*
 
-object PageCasePipe:
+object ProdPageCasePipe:
   val a = ""
   def in_Name(mobilePageCase: MobilePageCase) =
     mobilePageCase match
@@ -22,6 +22,16 @@ object PageCasePipe:
       case page: MobilePageCase.P02_all           => page.actionButton
       case page: MobilePageCase.P021_all_dev      => page.actionButton
       case page: MobilePageCase.P021x_linkedPage  => page.actionButton
+
+  def in_PubCases(mobilePageCase: MobilePageCase) =
+    mobilePageCase match
+      case page: MobilePageCase.P0                => page.pubs
+      case page: MobilePageCase.P01_all           => page.pubs
+      case page: MobilePageCase.P01x_matchSamples => page.pubs
+      case page: MobilePageCase.P01xy             => page.pubs
+      case page: MobilePageCase.P02_all           => page.pubs
+      case page: MobilePageCase.P021_all_dev      => page.pubs
+      case page: MobilePageCase.P021x_linkedPage  => page.pubs
 
       // case MobilePageCase.Page_Nopage(name)  => name
 

@@ -1,6 +1,7 @@
 package parseto
 import io.circe.Json
-import app.parseto.common.function.logs.log2
+import parseto.Log.log2
+import scala.util.chaining.*
 
 object PupCasePipe:
   def get_url(pubCase: PubCase) =
@@ -16,11 +17,12 @@ object PupCasePipe:
           pub_m2 = json.as[List[Transaction]].getOrElse(List(Transaction()))
         )
       case pub: PubCase.ApiPub =>
-        log2("json")(json)
         PubCase.ApiPub(
           pub_m1 = json,
           pub_m2 = json
             .as[List[List[String]]]
             .getOrElse(List.empty)
+            .pipe(log2("list??"))
             .map(list => ApiData(list(0), list(1), list(2), list(3), list(4)))
+            .pipe(log2("api data 111"))
         )

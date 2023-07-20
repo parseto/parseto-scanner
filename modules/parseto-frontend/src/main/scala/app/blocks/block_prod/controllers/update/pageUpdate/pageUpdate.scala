@@ -25,7 +25,16 @@ object PageUpdate:
                 pointer = ModelPipe.get_latest_number(model.prodModel) + 1
               )
             ),
-            Cmd.None
+            Cmd.Batch(
+              ProdPageCasePipe
+                .in_PubCases(page)
+                .map(pub =>
+                  CmdPipe.getDataCmd(
+                    pub,
+                    model
+                  ),
+                )
+            )
           )
     case MobilePageMsg.Next =>
       (
