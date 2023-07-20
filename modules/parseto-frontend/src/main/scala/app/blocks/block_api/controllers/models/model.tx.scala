@@ -20,3 +20,26 @@ object Transaction:
   given Encoder[Transaction] = deriveEncoder[Transaction]
 
   def decodeParser(data: String) = decode[List[Transaction]](data)
+
+case class ApiData(
+    name: String,
+    page: String,
+    isClick: String,
+    url: String,
+    category: String
+):
+  override def toString = s"${this.name} ${this.page}"
+
+object ApiData:
+  def apply(): ApiData =
+    ApiData(
+      name = "",
+      page = "",
+      isClick = "",
+      url = "",
+      category = ""
+    )
+  given Decoder[ApiData] = deriveDecoder[ApiData]
+  given Encoder[ApiData] = deriveEncoder[ApiData]
+
+  def decodeParser(data: String) = decode[List[ApiData]](data)

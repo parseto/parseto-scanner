@@ -7,3 +7,8 @@ enum PubCase:
       pub_m1: Json = Json.fromString("null"),
       pub_m2: List[Transaction] = List(Transaction())
   ) extends PubCase
+
+  case ApiPub(
+      pub_m1: Json = Json.fromString("null"),
+      pub_m2: List[ApiData] = List(ApiData())
+  ) extends PubCase

@@ -3,7 +3,8 @@ import scala.util.chaining.*
 import cats.instances.seq
 
 case class PageResponseViewCase(
-    var txs: List[Transaction] = List(Transaction())
+    var txs: List[Transaction] = List(Transaction()),
+    var apiData: List[ApiData] = List(ApiData())
 )
 
 object ApiPageCasePipe:
@@ -37,5 +38,7 @@ object ApiPageCasePipe:
         pub match
           case pub: PubCase.TxPub =>
             res.txs = pub.pub_m2
+          case pub: PubCase.ApiPub =>
+            res.apiData = pub.pub_m2
       )
     res

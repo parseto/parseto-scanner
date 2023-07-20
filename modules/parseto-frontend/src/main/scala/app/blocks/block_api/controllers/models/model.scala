@@ -22,5 +22,8 @@ enum ApiModelPageCase:
       name: String = "init",
       url: String = "Observer",
       actionButton: Move = Move(0, 0, 1),
-      pubs: List[PubCase] = List(PubCase.TxPub())
+      pubs: List[PubCase] = List(
+        PubCase.TxPub(),
+        PubCase.ApiPub()
+      )
   ) extends ApiModelPageCase
