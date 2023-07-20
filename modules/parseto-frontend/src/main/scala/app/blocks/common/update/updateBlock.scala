@@ -5,4 +5,10 @@ import cats.effect.IO
 object CommonUpdate:
   def update(model: BlockModel): CommonMsg => (BlockModel, Cmd[IO, CommonMsg]) =
     case CommonMsg.UpdateBlockPointer(blockPointer) =>
-      (model.copy(blockPointer = blockPointer), Cmd.None)
+      blockPointer match
+        case 2 =>
+          (
+            model.copy(blockPointer = blockPointer),
+            Cmd.None
+          )
+        case _ => (model.copy(blockPointer = blockPointer), Cmd.None)

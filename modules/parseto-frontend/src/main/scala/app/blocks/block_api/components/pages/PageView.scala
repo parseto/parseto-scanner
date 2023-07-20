@@ -3,6 +3,7 @@ import tyrian.*
 import cats.effect.IO
 import tyrian.Html.*
 import scala.util.chaining.*
+import parseto.Log.log2
 
 object ApiPageView:
 
@@ -10,7 +11,15 @@ object ApiPageView:
     div(
       `class` := s"flex justify-center"
     )(
-      div("안녕"),
-      div(model.txs.map(d => div(d.toString())))
-      // div(model..map(d => div(d.toString())))
+      div(onClick(ApiMsg.PreUpdate(ApiModelPageCase.DashBoard())))(
+        "tx 가져오기 버튼"
+      ),
+      div(model.txs.map(d => div(d.toString()))),
+      div(
+        model
+          .pipe(ApiModelPipe.find_current_PageCase)
+          .pipe(ApiPageCasePipe.pipe_PageResponseViewCase)
+          .txs
+          .map(d => div(s"${d}"))
+      )
     )

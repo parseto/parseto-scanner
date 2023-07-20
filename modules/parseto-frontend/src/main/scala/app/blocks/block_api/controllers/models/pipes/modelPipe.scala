@@ -17,3 +17,13 @@ object ApiModelPipe:
     model
       .pipe(in_appStates)
       .pipe(ApiModelStateCasePipe.find_latest_Number)
+
+  def find_last_PageCase(model: ApiModel) =
+    model
+      .pipe(in_appStates)
+      .pipe(ApiModelStateCasePipe.find_PageCase(model.appStates.length))
+
+  // def current_ViewCase(model: Model): ViewCase =
+  //   model
+  //     .pipe(find_current_PageCase)
+  //     .pipe(pipe_ViewCase)

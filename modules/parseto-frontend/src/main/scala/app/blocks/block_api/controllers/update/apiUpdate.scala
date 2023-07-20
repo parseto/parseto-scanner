@@ -20,13 +20,14 @@ object ApiUpdate:
     case ApiMsg.PreUpdate(page) =>
       (
         model.copy(apiModel =
-          model.apiModel.copy(appStates =
-            model.apiModel.appStates ++ Seq(
+          model.apiModel.copy(
+            appStates = model.apiModel.appStates ++ Seq(
               ApiModelStateCase(
                 number = ApiModelPipe.get_latest_number(model.apiModel) + 1,
                 apiModelPageCase = page
               )
-            )
+            ),
+            pointer = ApiModelPipe.get_latest_number(model.apiModel) + 1
           )
         ),
         Cmd.Batch(
