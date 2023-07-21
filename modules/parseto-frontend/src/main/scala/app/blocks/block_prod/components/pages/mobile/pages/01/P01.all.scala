@@ -14,18 +14,6 @@ object P01_all:
         `class` := "flex flex-col justify-between h-[100%] bg-white rounded-[20px]"
       )(
         MobileMainView.view({
-          // apiModel
-          //   .pipe(ApiModelPipe.find_current_PageCase)
-          //   .pipe(ApiPageCasePipe.pipe_PageResponseViewCase)
-          //   .apiData
-          //   .pipe(log2("apiData"))
-          //   .map(d => {
-          //     val p =
-          //       d.page match
-          //         case "P01xy" => MobilePageCase.P01x_matchSamples()
-          //         case _       => MobilePageCase.P01x_matchSamples()
-          //     BizSector(d.name, p, d.isClick.toBoolean)
-          //   })
           model.bizSector
         }),
         MobileFooterView.view(

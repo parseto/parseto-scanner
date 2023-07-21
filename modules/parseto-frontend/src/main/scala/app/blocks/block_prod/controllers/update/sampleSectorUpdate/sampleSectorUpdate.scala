@@ -30,3 +30,10 @@ object SampleSectorUpdate:
         ),
         Cmd.None
       )
+    case SampleSectorMsg.SampleSectorReplace(sampleMap) =>
+      (
+        model.copy(
+          prodModel = model.prodModel.copy(sampleSectorMap = sampleMap)
+        ),
+        Cmd.None
+      )

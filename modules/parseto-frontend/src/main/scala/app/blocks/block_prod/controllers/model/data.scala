@@ -25,6 +25,7 @@ object BizSectorInit:
   )
 
 object BizSectorPipe:
+
   val css =
     Map(
       true -> "h-16 border border-gray-300 rounded-lg hover:font-bold hover:border-blue-300 bg-blue-600 text-white",
@@ -110,7 +111,8 @@ case class SampleSector(
     name: String,
     page: MobilePageCase = MobilePageCase.P021x_linkedPage(),
     isClick: Boolean = false,
-    url: String = ""
+    url: String = "",
+    category: String = "의료"
 )
 
 object SampleInit:

@@ -60,8 +60,7 @@ object ApiUpdate:
                       case _       => MobilePageCase.P01x_matchSamples()
                   BizSector(d.name, p, d.isClick.toBoolean)
                 })
-              case _ => model.apiModel.bizSector
-              // List(BizSector())
+              case _ => model.apiModel.bizSector,
           )
         ),
         pub match
@@ -73,15 +72,38 @@ object ApiUpdate:
                   case _       => MobilePageCase.P01x_matchSamples()
               BizSector(d.category, p, d.isClick.toBoolean)
             })
-            Cmd.Emit(
-              BizSectorMsg.BizSectorInit(
-                bizs
-                  .distinctBy(_.name)
-                  .map(d =>
-                    d.name == "의료" match
-                      case true => d.copy(isClick = true)
-                      case _    => d
-                  )
+
+            def apiDataToSampleSector(apiData: ApiData): SampleSector =
+              SampleSector(
+                apiData.name,
+                MobilePageCase.P01xy(),
+                apiData.isClick.toBoolean,
+                apiData.url,
+                apiData.category
+              )
+
+            val maps = pub.pub_m2
+              .map(apiDataToSampleSector)
+              .groupBy(_.category)
+              .map((str, d) => (str, d(0).copy(isClick = true) +: d.tail))
+
+            Cmd.Batch(
+              Cmd.Emit(
+                BizSectorMsg.BizSectorInit(
+                  bizs
+                    .distinctBy(_.name)
+                    // 초기화
+                    .map(d =>
+                      d.name == "의료" match
+                        case true => d.copy(isClick = true)
+                        case _    => d
+                    )
+                )
+              ),
+              Cmd.Emit(
+                SampleSectorMsg.SampleSectorReplace(
+                  maps
+                )
               )
             )
           case _ => Cmd.None

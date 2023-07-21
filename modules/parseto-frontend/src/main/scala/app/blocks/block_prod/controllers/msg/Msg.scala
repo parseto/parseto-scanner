@@ -20,6 +20,7 @@ enum ProfileSectorMsg extends Msg:
 
 enum SampleSectorMsg extends Msg:
   case SampleSectorUpdate(name: String)
+  case SampleSectorReplace(sampleMap: Map[String, List[SampleSector]])
 
 enum StepMsg extends Msg:
   case StepUpdate(step: Int)
