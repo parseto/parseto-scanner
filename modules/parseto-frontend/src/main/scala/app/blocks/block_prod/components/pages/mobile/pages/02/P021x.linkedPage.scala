@@ -6,6 +6,8 @@ import scala.util.chaining.*
 
 object P021x_linkedPage:
 
+  // TODO : iframe 접속할때 모바일에서 접속한것처럼 변경하기
+  // https://stackoverflow.com/questions/58005954/how-to-change-browser-user-agent-header-with-javascript
   def view(model: ProdModel): Html[Msg] =
     div(`class` := "galuxy-note-10")(
       b("Camera"),
