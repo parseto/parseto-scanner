@@ -1,6 +1,5 @@
 package parseto
 import io.circe.Json
-
 import scala.scalajs.js
 
 object PupCasePipe:
