@@ -34,7 +34,6 @@ object Tester:
     )
 
   def parseJsonString_ex1 = JsonString.ex_fruits
-    .pipe(log2("ex_fruits"))
     .pipe(string2json) // [CC-convert-create]
     .pipe(
       json2json_update(List("과일", "1"), "d")

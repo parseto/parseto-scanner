@@ -4,3 +4,4 @@
 _*
 **/**/*.zip
 modules/.DS_Store
+**/.env

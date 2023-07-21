@@ -34,9 +34,7 @@ def listToHtml(l: List[String]) =
   )
 def splitInput(input: String): List[String] =
   input
-    .pipe(log2("인풋"))
     .split(" ")
-    .pipe(log2("인풋2"))
     .map { element =>
       val spacing = element.length match {
         case 0 => ""
@@ -44,9 +42,7 @@ def splitInput(input: String): List[String] =
       }
       spacing + element
     }
-    .pipe(log2("인풋3"))
     .toList
-    .pipe(log2("인풋4"))
 
 def genLine(lines: List[String]) = lines.map(str => div(genSyntax(str)))
 def genSyntax(line: String) =
@@ -58,7 +54,6 @@ def genSyntax(line: String) =
     // .split("\\s+")
     .pipe(a => a)
     .toList
-    .pipe(log2("뭐지?"))
     .map(s =>
       s match
         case "package" | "import" => span(style := "color: #569cd6;")(s"$s")

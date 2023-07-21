@@ -1,13 +1,14 @@
 package parseto
 import io.circe.Json
-import parseto.Log.log2
-import scala.util.chaining.*
+
+import scala.scalajs.js
 
 object PupCasePipe:
   def get_url(pubCase: PubCase) =
+    val base = js.Dynamic.global.process.env.API_LINK
     pubCase match
-      case pub: PubCase.TxPub  => "http://localhost:3000/tx"
-      case pub: PubCase.ApiPub => "http://localhost:3000/api"
+      case pub: PubCase.TxPub  => s"$base/tx"
+      case pub: PubCase.ApiPub => s"$base/api"
 
   def updatePubCase_data(pub: PubCase, json: Json) =
     pub match
@@ -22,7 +23,7 @@ object PupCasePipe:
           pub_m2 = json
             .as[List[List[String]]]
             .getOrElse(List.empty)
-            .pipe(log2("list??"))
+            // .pipe(log2("list??"))
             .map(list => ApiData(list(0), list(1), list(2), list(3), list(4)))
-            .pipe(log2("api data 111"))
+          // .pipe(log2("api data 111"))
         )

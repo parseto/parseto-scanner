@@ -17,7 +17,6 @@ object MobileMainView:
   )(str)
 
   def genButtonCase(bizSectors: List[BizSector])(d: BizSector) =
-    log2("d")(d.isClick)
     genButton(
       d.name,
       BizSectorPipe.css(d.isClick),
