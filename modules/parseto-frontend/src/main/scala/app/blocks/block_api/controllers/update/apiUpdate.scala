@@ -126,6 +126,7 @@ object ApiUpdate:
           )
 
     case ApiMsg.Error(err) =>
+      log2("err")(err)
       (model.copy(), Cmd.None)
 
     case ApiMsg.None =>

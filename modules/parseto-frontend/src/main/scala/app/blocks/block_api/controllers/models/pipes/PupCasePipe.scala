@@ -6,8 +6,8 @@ object PupCasePipe:
   def get_url(pubCase: PubCase) =
     val base = js.Dynamic.global.process.env.API_LINK
     pubCase match
-      case pub: PubCase.TxPub  => s"$base/tx"
-      case pub: PubCase.ApiPub => s"$base/api"
+      case pub: PubCase.TxPub  => s"$base/api/tx/getTx"
+      case pub: PubCase.ApiPub => s"$base/api/google/getData"
 
   def updatePubCase_data(pub: PubCase, json: Json) =
     pub match
