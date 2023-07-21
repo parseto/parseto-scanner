@@ -71,11 +71,17 @@ object ApiUpdate:
                 d.page match
                   case "P01xy" => MobilePageCase.P01x_matchSamples()
                   case _       => MobilePageCase.P01x_matchSamples()
-              BizSector(d.name, p, d.isClick.toBoolean)
+              BizSector(d.category, p, d.isClick.toBoolean)
             })
             Cmd.Emit(
               BizSectorMsg.BizSectorInit(
                 bizs
+                  .distinctBy(_.name)
+                  .map(d =>
+                    d.name == "의료" match
+                      case true => d.copy(isClick = true)
+                      case _    => d
+                  )
               )
             )
           case _ => Cmd.None
