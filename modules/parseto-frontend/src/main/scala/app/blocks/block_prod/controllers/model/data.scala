@@ -2,13 +2,13 @@ package parseto
 
 case class BizSector(
     name: String,
-    page: MobilePageCase = MobilePageCase.P01x_matchSamples(),
+    page: MobilePageCase = MobilePageCase.P01X_GET(),
     isClick: Boolean = false
 )
 
 object BizSectorInit:
   val value = List(
-    BizSector("의료", MobilePageCase.P01x_matchSamples(), true),
+    BizSector("의료", MobilePageCase.P01X_GET(), true),
     BizSector("법률"),
     BizSector("쇼핑몰"),
     BizSector("뉴스"),
@@ -111,7 +111,7 @@ case class SampleSector(
     name: String,
     page: MobilePageCase = MobilePageCase.P021x_linkedPage(),
     isClick: Boolean = false,
-    url: String = "",
+    url: String = "123",
     category: String = "의료"
 )
 

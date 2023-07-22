@@ -5,7 +5,7 @@ import tyrian.Html.*
 import scala.util.chaining.*
 import parseto.Log.log2
 
-object P01x_matchSamples:
+object P01X_GET:
 
   def genButtonCase(profileSectors: List[SampleSector])(d: SampleSector) =
     genButton(

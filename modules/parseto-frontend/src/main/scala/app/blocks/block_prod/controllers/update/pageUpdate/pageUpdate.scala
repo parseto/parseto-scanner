@@ -46,13 +46,16 @@ object PageUpdate:
               case page: MobilePageCase.P01_all =>
                 model.prodModel.bizSector.filter(d => d.isClick)(0).page
 
-              case page: MobilePageCase.P01x_matchSamples =>
+              case page: MobilePageCase.P01X_GET =>
                 model.prodModel
                   .sampleSectorMap(
                     model.prodModel.bizSector.filter(d => d.isClick)(0).name
                   )
                   .filter(d => d.isClick)(0)
                   .page
+
+              case page: MobilePageCase.P01X_POST =>
+                MobilePageCase.P01_all()
 
               case page: MobilePageCase.P02_all =>
                 model.prodModel.talkSector.filter(d => d.isClick)(0).page
@@ -62,5 +65,14 @@ object PageUpdate:
 
               case _ => model.prodModel.bizSector.filter(d => d.isClick)(0).page
           )
+        )
+      )
+    case MobilePageMsg.Post =>
+      (
+        model.copy(
+        ),
+        Cmd.Batch(
+          CmdPipe.postDataCmd("http://localhost:3000/api/google/postData"),
+          Cmd.Emit(MobilePageMsg.Next)
         )
       )

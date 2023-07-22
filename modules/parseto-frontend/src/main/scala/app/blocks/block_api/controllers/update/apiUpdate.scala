@@ -56,8 +56,8 @@ object ApiUpdate:
                 pub.pub_m2.map(d => {
                   val p =
                     d.page match
-                      case "P01xy" => MobilePageCase.P01x_matchSamples()
-                      case _       => MobilePageCase.P01x_matchSamples()
+                      case "P01xy" => MobilePageCase.P01X_GET()
+                      case _       => MobilePageCase.P01X_GET()
                   BizSector(d.name, p, d.isClick.toBoolean)
                 })
               case _ => model.apiModel.bizSector,
@@ -68,8 +68,9 @@ object ApiUpdate:
             val bizs = pub.pub_m2.map(d => {
               val p =
                 d.page match
-                  case "P01xy" => MobilePageCase.P01x_matchSamples()
-                  case _       => MobilePageCase.P01x_matchSamples()
+                  case "P01get"  => MobilePageCase.P01X_GET()
+                  case "P01post" => MobilePageCase.P01X_POST()
+                  case _         => MobilePageCase.P01X_GET()
               BizSector(d.category, p, d.isClick.toBoolean)
             })
 

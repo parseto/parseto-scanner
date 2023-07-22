@@ -23,7 +23,14 @@ enum MobilePageCase:
       pubs: List[PubCase] = List(new PubCase.ApiPub)
   ) extends MobilePageCase
 
-  case P01x_matchSamples(
+  case P01X_GET(
+      name: String = "init",
+      url: String = "Observer",
+      actionButton: Move = Move(0, 1, 1),
+      pubs: List[PubCase] = List()
+  ) extends MobilePageCase
+
+  case P01X_POST(
       name: String = "init",
       url: String = "Observer",
       actionButton: Move = Move(0, 1, 1),

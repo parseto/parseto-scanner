@@ -7,6 +7,7 @@ import scalajs.js
 enum MobilePageMsg extends Msg:
   case PreUpdate(page: MobilePageCase)
   case Next
+  case Post
 
 enum BizSectorMsg extends Msg:
   case BizSectorUpdate(name: String)

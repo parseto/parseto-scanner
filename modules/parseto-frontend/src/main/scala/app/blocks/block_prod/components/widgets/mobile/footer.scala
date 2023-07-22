@@ -16,6 +16,15 @@ object MobileFooterView:
           p("오픈프로필 연결"),
           p(`class` := "pl-2 font font-bold")(">")
         )
+      case page: MobilePageCase.P01X_POST =>
+        button(
+          onClick(MobilePageMsg.Post),
+          `type` := "submit",
+          `class` := css
+        )(
+          p("오픈프로필 연결"),
+          p(`class` := "pl-2 font font-bold")(">")
+        )
       case _ =>
         button(
           onClick(MobilePageMsg.Next),

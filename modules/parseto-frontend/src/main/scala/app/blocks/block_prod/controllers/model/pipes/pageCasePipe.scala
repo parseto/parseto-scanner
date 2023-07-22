@@ -5,33 +5,36 @@ object ProdPageCasePipe:
   val a = ""
   def in_Name(mobilePageCase: MobilePageCase) =
     mobilePageCase match
-      case page: MobilePageCase.P0                => page.name
-      case page: MobilePageCase.P01_all           => page.name
-      case page: MobilePageCase.P01x_matchSamples => page.name
-      case page: MobilePageCase.P01xy             => page.name
-      case page: MobilePageCase.P02_all           => page.name
-      case page: MobilePageCase.P021_all_dev      => page.name
-      case page: MobilePageCase.P021x_linkedPage  => page.name
+      case page: MobilePageCase.P0               => page.name
+      case page: MobilePageCase.P01_all          => page.name
+      case page: MobilePageCase.P01X_GET         => page.name
+      case page: MobilePageCase.P01X_POST        => page.name
+      case page: MobilePageCase.P01xy            => page.name
+      case page: MobilePageCase.P02_all          => page.name
+      case page: MobilePageCase.P021_all_dev     => page.name
+      case page: MobilePageCase.P021x_linkedPage => page.name
 
   def in_actionButton(mobilePageCase: MobilePageCase) =
     mobilePageCase match
-      case page: MobilePageCase.P0                => page.actionButton
-      case page: MobilePageCase.P01_all           => page.actionButton
-      case page: MobilePageCase.P01x_matchSamples => page.actionButton
-      case page: MobilePageCase.P01xy             => page.actionButton
-      case page: MobilePageCase.P02_all           => page.actionButton
-      case page: MobilePageCase.P021_all_dev      => page.actionButton
-      case page: MobilePageCase.P021x_linkedPage  => page.actionButton
+      case page: MobilePageCase.P0               => page.actionButton
+      case page: MobilePageCase.P01_all          => page.actionButton
+      case page: MobilePageCase.P01X_GET         => page.actionButton
+      case page: MobilePageCase.P01X_POST        => page.actionButton
+      case page: MobilePageCase.P01xy            => page.actionButton
+      case page: MobilePageCase.P02_all          => page.actionButton
+      case page: MobilePageCase.P021_all_dev     => page.actionButton
+      case page: MobilePageCase.P021x_linkedPage => page.actionButton
 
   def in_PubCases(mobilePageCase: MobilePageCase) =
     mobilePageCase match
-      case page: MobilePageCase.P0                => page.pubs
-      case page: MobilePageCase.P01_all           => page.pubs
-      case page: MobilePageCase.P01x_matchSamples => page.pubs
-      case page: MobilePageCase.P01xy             => page.pubs
-      case page: MobilePageCase.P02_all           => page.pubs
-      case page: MobilePageCase.P021_all_dev      => page.pubs
-      case page: MobilePageCase.P021x_linkedPage  => page.pubs
+      case page: MobilePageCase.P0               => page.pubs
+      case page: MobilePageCase.P01_all          => page.pubs
+      case page: MobilePageCase.P01X_GET         => page.pubs
+      case page: MobilePageCase.P01X_POST        => page.pubs
+      case page: MobilePageCase.P01xy            => page.pubs
+      case page: MobilePageCase.P02_all          => page.pubs
+      case page: MobilePageCase.P021_all_dev     => page.pubs
+      case page: MobilePageCase.P021x_linkedPage => page.pubs
 
       // case MobilePageCase.Page_Nopage(name)  => name
 

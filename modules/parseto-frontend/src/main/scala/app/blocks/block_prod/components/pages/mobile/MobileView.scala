@@ -10,8 +10,10 @@ object Pages:
     find_current_PageCase(model) match
       case page: MobilePageCase.P0      => P0_IntroView.view(model)
       case page: MobilePageCase.P01_all => P01_all.view(model, apiModel)
-      case page: MobilePageCase.P01x_matchSamples =>
-        P01x_matchSamples.view(model)
+      case page: MobilePageCase.P01X_GET =>
+        P01X_GET.view(model)
+      case page: MobilePageCase.P01X_POST =>
+        P01X_POST.view(model)
       case page: MobilePageCase.P01xy            => P01xy.view(model)
       case page: MobilePageCase.P02_all          => P02_ALL.view(model)
       case page: MobilePageCase.P021_all_dev     => P021_all_dev.view(model)
