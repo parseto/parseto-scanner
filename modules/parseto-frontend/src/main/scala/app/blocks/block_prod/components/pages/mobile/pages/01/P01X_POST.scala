@@ -18,12 +18,47 @@ object P01X_POST:
     onClick(msg)
   )(str)
 
-  def main(profileSectors: List[SampleSector]) =
-    log2("profileSectors==")(profileSectors)
+  def main() =
     div(`class` := "flex flex-col gap-4 p-8 px-14 pt-20")(
       div(`class` := "text-lg font-bold")("새로운 업종 추가하기"),
-      div(`class` := "grid grid-cols-1 gap-4 text-sm text-gray-600")(
-        "내용"
+      // consider .. (POST 요청을 msg 단에서 처리하는것이 좋을지 고민)
+      form(
+        `class` := "",
+        id := "PO1X_POST",
+        method := "post",
+        action := "http://localhost:3000/api/google/postData",
+        target := "_self"
+      )(
+        div(`class` := "grid gap-6 mb-6 ")(
+          div(
+            label(
+              `for` := "category",
+              `class` := "block mb-2 text-sm font-medium text-gray-900 "
+            )("카테고리"),
+            input(
+              `type` := "text",
+              id := "category",
+              name := "category",
+              `class` := "bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ",
+              placeholder := "웹서비스",
+              required
+            )
+          ),
+          div(
+            label(
+              `for` := "website",
+              `class` := "block mb-2 text-sm font-medium text-gray-900 "
+            )("Website URL"),
+            input(
+              `type` := "url",
+              id := "website",
+              name := "website",
+              `class` := "bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ",
+              placeholder := "flowbite.com",
+              required
+            )
+          )
+        )
       )
     )
 
@@ -36,9 +71,6 @@ object P01X_POST:
         `class` := "flex flex-col justify-between h-[100%] bg-white rounded-[20px]"
       )(
         main(
-          model.sampleSectorMap(
-            name
-          )
         ),
         MobileFooterView.render(model)(
           SampleSectorPipe.cssFooter(

@@ -18,11 +18,13 @@ object MobileFooterView:
         )
       case page: MobilePageCase.P01X_POST =>
         button(
-          onClick(MobilePageMsg.Post),
-          `type` := "submit",
+          // onClick(MobilePageMsg.Post),
+          // onSubmit(),
+          `form` := "PO1X_POST",
+          `type` := "button",
           `class` := css
         )(
-          p("오픈프로필 연결"),
+          p("나만의 카테고리 생성하기!"),
           p(`class` := "pl-2 font font-bold")(">")
         )
       case _ =>
