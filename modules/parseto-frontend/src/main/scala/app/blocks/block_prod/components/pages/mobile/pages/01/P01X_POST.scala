@@ -19,14 +19,21 @@ object P01X_POST:
   )(str)
 
   def main() =
+    log2("asd")("1211")
     div(`class` := "flex flex-col gap-4 p-8 px-14 pt-20")(
       div(`class` := "text-lg font-bold")("새로운 업종 추가하기"),
       // consider .. (POST 요청을 msg 단에서 처리하는것이 좋을지 고민)
       form(
+        onEvent(
+          "submit",
+          e =>
+            Log.log(e)
+            MobilePageMsg.Post(e)
+        ),
         `class` := "",
         id := "PO1X_POST",
         method := "post",
-        action := "http://localhost:3000/api/google/postData",
+        // action := "http://localhost:3000/api/google/postData",
         target := "_self"
       )(
         div(`class` := "grid gap-6 mb-6 ")(

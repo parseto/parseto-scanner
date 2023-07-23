@@ -3,11 +3,12 @@ package parseto
 import io.circe.Json
 import org.scalajs.dom.Element
 import scalajs.js
+import org.scalajs.dom.Event
 
 enum MobilePageMsg extends Msg:
   case PreUpdate(page: MobilePageCase)
   case Next
-  case Post
+  case Post(e: Event)
 
 enum BizSectorMsg extends Msg:
   case BizSectorUpdate(name: String)

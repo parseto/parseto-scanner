@@ -1,9 +1,10 @@
 package parseto
 import tyrian.*
+import tyrian.Html.onSubmit
 import cats.effect.IO
 import tyrian.Html.*
 import scala.util.chaining.*
-
+import org.scalajs.dom.Event
 object MobileFooterView:
   def render(model: ProdModel)(css: String) =
     model.pipe(ModelPipe.find_current_PageCase) match
@@ -19,9 +20,9 @@ object MobileFooterView:
       case page: MobilePageCase.P01X_POST =>
         button(
           // onClick(MobilePageMsg.Post),
-          // onSubmit(),
+
           `form` := "PO1X_POST",
-          `type` := "button",
+          `type` := "submit",
           `class` := css
         )(
           p("나만의 카테고리 생성하기!"),

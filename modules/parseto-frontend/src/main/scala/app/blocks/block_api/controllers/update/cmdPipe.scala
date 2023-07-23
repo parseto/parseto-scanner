@@ -39,7 +39,7 @@ object CmdPipe:
     Http.send(
       Request
         .post(
-          url,
+          "http://localhost:3000/api/google/postData",
           Body.json(
             sampleSectorToStringList(List(sample)).pipe(Log.log2("send data"))
           )

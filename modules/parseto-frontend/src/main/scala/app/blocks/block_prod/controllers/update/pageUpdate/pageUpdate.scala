@@ -1,12 +1,17 @@
 package parseto
 import tyrian.Html.*
 import scala.scalajs.js
+// import org.scalajs.dom.raw.{FormData}
+
 import org.scalajs.dom.window
 import scala.util.chaining.*
 import tyrian.*
 import cats.effect.IO
 import app.parseto.common.function.logs.log2
 import parseto.ModelPipe.find_current_PageCase
+import org.scalajs.dom.FormData
+import org.scalajs.dom.HTMLFormElement
+import js.DynamicImplicits.*
 
 object PageUpdate:
   def update(model: BlockModel): MobilePageMsg => (BlockModel, Cmd[IO, Msg]) =
@@ -67,7 +72,30 @@ object PageUpdate:
           )
         )
       )
-    case MobilePageMsg.Post =>
+    case MobilePageMsg.Post(e) =>
+      import org.scalajs.dom.document
+      import org.scalajs.dom.html
+
+      e.preventDefault()
+
+      def getById(id: String) =
+        document
+          .getElementById(id)
+          .asInstanceOf[html.Input]
+          .value
+
+      val category = getById("category")
+      val website = getById("website")
+
+      val formData =
+        new FormData(e.target.asInstanceOf[HTMLFormElement])
+          .asInstanceOf[js.Dynamic]
+          .get("category")
+          .asInstanceOf[String]
+          .pipe(log2("categor!!"))
+
+      // new FormData(e.target).append()
+
       (
         model.copy(
         ),
@@ -76,3 +104,25 @@ object PageUpdate:
           Cmd.Emit(MobilePageMsg.Next)
         )
       )
+    // case MobilePageMsg.Post(e) =>
+    //   e.preventDefault()
+    //   e.target.pipe(Log.log2("target"))
+    //   val targetE = e.target
+    //   val targetHTML = e.target.asInstanceOf[HTMLFormElement]
+    //   Log.log(targetHTML)
+    //   Log.log(targetHTML.acceptCharset)
+    //   Log.log(targetHTML.name)
+
+    //   val formData =
+    //     new FormData(e.target.asInstanceOf[HTMLFormElement])
+
+    //   // log2("a")(a.ent)
+
+    //   (
+    //     model.copy(
+    //     ),
+    //     Cmd.Batch(
+    //       CmdPipe.postDataCmd("http://localhost:3000/api/google/postData"),
+    //       Cmd.Emit(MobilePageMsg.Next)
+    //     )
+    //   )
