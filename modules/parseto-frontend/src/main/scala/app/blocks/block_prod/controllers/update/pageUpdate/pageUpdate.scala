@@ -1,7 +1,9 @@
 package parseto
 import tyrian.Html.*
+// import tyrian.Event
 import scala.scalajs.js
 // import org.scalajs.dom.raw.{FormData}
+import org.scalajs.dom.Event
 
 import org.scalajs.dom.window
 import scala.util.chaining.*
@@ -84,26 +86,33 @@ object PageUpdate:
           .asInstanceOf[html.Input]
           .value
 
-      val category = getById("category")
-      val website = getById("website")
+      def genForm(e: Event) = new FormData(
+        e.target.asInstanceOf[HTMLFormElement]
+      )
 
-      val formData =
-        new FormData(e.target.asInstanceOf[HTMLFormElement])
-          .asInstanceOf[js.Dynamic]
-          .get("category")
-          .asInstanceOf[String]
-          .pipe(log2("categor!!"))
+      def getFormValue(id: String)(form: FormData) = form
+        .asInstanceOf[js.Dynamic]
+        .get(id)
+        .asInstanceOf[String]
 
-      // new FormData(e.target).append()
+      def getValue(e: Event)(id: String) =
+        e.pipe(genForm).pipe(getFormValue(id))
+
+      def convertListToSampleSector(list: List[String]): SampleSector =
+        SampleSector(category = list(0), url = list(1), name = list(2))
+
+      val sample = List("category", "url", "name")
+        .map(getValue(e))
+        .pipe(convertListToSampleSector)
 
       (
-        model.copy(
-        ),
+        model.copy(),
         Cmd.Batch(
-          CmdPipe.postDataCmd("http://localhost:3000/api/google/postData"),
+          CmdPipe.postDataCmd(sample),
           Cmd.Emit(MobilePageMsg.Next)
         )
       )
+
     // case MobilePageMsg.Post(e) =>
     //   e.preventDefault()
     //   e.target.pipe(Log.log2("target"))

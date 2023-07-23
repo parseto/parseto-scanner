@@ -27,8 +27,7 @@ object CmdPipe:
       Decoder[ApiMsg](responseOk(pub), responseError)
     )
 
-  def postDataCmd(url: String): Cmd[IO, ApiMsg] =
-    val sample = SampleSector(name = "sample", category = "category1")
+  def postDataCmd(sample: SampleSector): Cmd[IO, ApiMsg] =
     def sampleSectorToStringList(samples: List[SampleSector]) =
       val map = samples.map(d =>
         s"""["${sample.name}","${sample.page}","${sample.isClick}","${sample.url}","${sample.category}"]"""
@@ -41,7 +40,8 @@ object CmdPipe:
         .post(
           "http://localhost:3000/api/google/postData",
           Body.json(
-            sampleSectorToStringList(List(sample)).pipe(Log.log2("send data"))
+            sampleSectorToStringList(List(sample))
+              .pipe(Log.log2("send data"))
           )
         )
         .withTimeout(5.seconds),
