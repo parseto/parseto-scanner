@@ -25,7 +25,7 @@ object MobileFooterView:
           `type` := "submit",
           `class` := css
         )(
-          p("나만의 카테고리 생성하기!"),
+          p("나만의 카테고리 생성하기"),
           p(`class` := "pl-2 font font-bold")(">")
         )
       case _ =>
