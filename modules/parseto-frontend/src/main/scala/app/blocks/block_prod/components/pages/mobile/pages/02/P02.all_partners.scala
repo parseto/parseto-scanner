@@ -31,7 +31,7 @@ object P02_ALL:
         `class` := "flex flex-col justify-between h-[100%] bg-white rounded-[20px]"
       )(
         main(model.talkSector),
-        MobileFooterView.view(
+        MobileFooterView.render(model)(
           TalkSectorPipe.cssFooter(
             model.talkSector.map(d => d.isClick).contains(true)
           )

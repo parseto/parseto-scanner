@@ -16,7 +16,7 @@ object P01_all:
         MobileMainView.view({
           model.bizSector
         }),
-        MobileFooterView.view(
+        MobileFooterView.render(model)(
           BizSectorPipe.cssFooter(
             model.bizSector.map(d => d.isClick).contains(true)
           )

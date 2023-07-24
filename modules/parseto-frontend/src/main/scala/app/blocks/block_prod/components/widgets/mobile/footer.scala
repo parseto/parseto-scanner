@@ -8,6 +8,15 @@ import org.scalajs.dom.Event
 object MobileFooterView:
   def render(model: ProdModel)(css: String) =
     model.pipe(ModelPipe.find_current_PageCase) match
+      case page: MobilePageCase.P01_all =>
+        button(
+          onClick(MobilePageMsg.Next),
+          `type` := "submit",
+          `class` := css
+        )(
+          p("다음"),
+          p(`class` := "pl-2 font font-bold")(">")
+        )
       case page: MobilePageCase.P021_all_dev =>
         button(
           onClick(MobilePageMsg.Next),
@@ -37,13 +46,3 @@ object MobileFooterView:
           p("다음"),
           p(`class` := "pl-2 font font-bold")(">")
         )
-
-  def view(css: String) =
-    button(
-      onClick(MobilePageMsg.Next),
-      `type` := "submit",
-      `class` := css
-    )(
-      p("다음"),
-      p(`class` := "pl-2 font font-bold")(">")
-    )
