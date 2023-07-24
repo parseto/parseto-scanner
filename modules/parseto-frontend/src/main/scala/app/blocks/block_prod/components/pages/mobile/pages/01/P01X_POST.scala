@@ -67,13 +67,13 @@ object P01X_POST:
           ),
           div(
             label(
-              `for` := "website",
+              `for` := "url",
               `class` := "block mb-2 text-sm font-medium text-gray-900 "
             )("Website URL"),
             input(
               `type` := "url",
-              id := "website",
-              name := "website",
+              id := "url",
+              name := "url",
               `class` := "bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ",
               placeholder := "flowbite.com",
               required
